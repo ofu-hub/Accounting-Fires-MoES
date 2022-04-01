@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 X:\GitHub\ofu-hub\Accounting-Fires-MoES\src\WpfApp\App.xaml
-1-1089536010
+2-1831352917
 
-7-2006096934
+10-740375128
 13-38814620
-Views\Windows\MainWindow.xaml;
+Views\Windows\ReportWindow.xaml;Views\Windows\MainWindow.xaml;
 
-False
+True
 
