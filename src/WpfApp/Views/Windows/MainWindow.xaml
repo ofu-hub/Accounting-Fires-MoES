@@ -14,12 +14,41 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать отчет"/>
-                <MenuItem Header="Открыть отчет"/>
                 <MenuItem Header="Выход"/>
             </MenuItem>
             <MenuItem Header="Помощь">
                 <MenuItem Header="О программе"/>
             </MenuItem>
         </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="0" Header="Отчеты по пожарам">
+                <ListBox ItemsSource="{Binding FileReports}"
+                         DisplayMemberPath="Title"
+                         SelectedItem="{Binding SelectedFileRep}"/>
+            </GroupBox>
+            <GroupBox Grid.Column="1" Header="{Binding SelectedFileRep.Title, FallbackValue='Информация об отчете', TargetNullValue='Отчет не выбран'}">
+                <StackPanel DataContext="{Binding SelectedFileRep.GeneralInfo}">
+                    <TextBlock Text="Общие сведения:" FontSize="16px"/>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run>Код органа (района, населенного пункта) - составителя карточки: </Run>
+                        <Run Text="{Binding OrganCode}" FontWeight="Bold"/>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run>Дата возникновения пожара (загорания) (дд/мм/гг): </Run>
+                        <Run Text="{Binding DateOfFire}" FontWeight="Bold"/>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run>Вид населенного пункта; Вид пожарной охраны населенного пункта:</Run>
+                        <Run Text="{Binding TypeOfSettlement}" FontWeight="Bold"/>
+                        <Run Text=" ; "/>
+                        <Run Text="{Binding TypeOfFireDepSettlement}" FontWeight="Bold"/>
+                    </TextBlock>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
     </DockPanel>
 </Window>

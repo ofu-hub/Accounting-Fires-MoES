@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace WpfApp.ViewModels.Base
+namespace WpfApp.Models.Base
 {
     /// <summary>
-    /// Базовый класс модели-представления
+    /// Базовый класс модели
     /// </summary>
-    internal abstract class ViewModelBase : INotifyPropertyChanged
+    internal abstract class ModelBase : INotifyPropertyChanged
     {
         /// <summary>
         /// Событие
@@ -22,7 +22,7 @@ namespace WpfApp.ViewModels.Base
         /// Изменение событий
         /// </summary>
         /// <param name="PropertyName">Свойство события</param>
-        protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null) // [CallerMemberName] - атрибут для компилятора, который подставляет имя метода из которого вызывается данная процедура
+        public virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null) // [CallerMemberName] - атрибут для компилятора, который подставляет имя метода из которого вызывается данная процедура
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
@@ -31,11 +31,11 @@ namespace WpfApp.ViewModels.Base
         /// Метод обновления свойства для которого определено поле, в котором это свойство хранит свои данные
         /// </summary>
         /// <typeparam name="T">Тип свойства</typeparam>
-        /// <param name="field">Ссылка на поле свойства</param>
+        /// <param name="field">Поле свойства</param>
         /// <param name="value">Значение</param>
         /// <param name="PropertyName">Свойство события</param>
         /// <returns>Измененное свойство</returns>
-        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string PropertyName = null)
+        public virtual bool Set<T>(T field, T value, [CallerMemberName] string PropertyName = null)
         {
             if (Equals(field, value)) return false;
             field = value;
