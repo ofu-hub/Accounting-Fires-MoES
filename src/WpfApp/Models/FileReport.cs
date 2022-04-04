@@ -30,7 +30,18 @@ namespace WpfApp.Models
         /// <summary>
         /// Индефикатор общих сведений
         /// </summary>
-        private GeneralInformation _GeneralInfo { get; set; }
+        private Guid _GeneralInfoId { get; set; }
+
+        public Guid GeneralInfoId
+        {
+            get { return _GeneralInfoId; }
+            set { _GeneralInfoId = value; }
+        }
+
+        /// <summary>
+        /// Общие сведения
+        /// </summary>
+        public virtual GeneralInformation _GeneralInfo { get; set; }
 
         public GeneralInformation GeneralInfo
         {

@@ -27,7 +27,6 @@
             <TabItem Header="Развитие и тушение пожара"></TabItem>
             <TabItem Header="Силы и средства пожаротушения"></TabItem>
             <TabItem Header="Сведения о погибших и травмированных"></TabItem>
-            <TabItem Header="Дополнительные сведения"></TabItem>
         </TabControl>
     </DockPanel>
 </Window>
