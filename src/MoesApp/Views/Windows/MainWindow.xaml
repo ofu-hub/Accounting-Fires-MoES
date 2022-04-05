@@ -30,68 +30,124 @@
                          SelectedItem="{Binding SelectedFileRep}"/>
             </GroupBox>
             <GroupBox Grid.Column="1" Header="{Binding SelectedFileRep.Title, FallbackValue='Информация об отчете', TargetNullValue='Отчет не выбран'}">
-                <StackPanel DataContext="{Binding SelectedFileRep}">
-                    <TextBlock Text="Раздел 1. Общие сведения:" FontSize="16px"/>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Код органа (района, населенного пункта) - составителя карточки: </Run>
-                        <Run Text="{Binding FileReportGenInfo.OrgCode}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Дата возникновения пожара (загорания) (дд/мм/гг): </Run>
-                        <Run Text="{Binding FileReportGenInfo.Datefire, StringFormat=d}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Вид населенного пункта; Вид пожарной охраны населенного пункта:</Run>
-                        <Run Text="{Binding FileReportGenInfo.TypesettCode}" FontWeight="Bold"/>
-                        <Run Text=";"/>
-                        <Run Text="{Binding FileReportGenInfo.TypefiresettCode}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock Text="Раздел 2. Объект пожара:" FontSize="16px"/>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Субъект малого и среднего предпринимательства: </Run>
-                        <Run Text="{Binding FileReportFireObj.Subject}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Форма собственности: </Run>
-                        <Run Text="{Binding FileReportFireObj.SubTypeOwner}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Категория риска объекта пожара: </Run>
-                        <Run Text="{Binding FileReportFireObj.ObjRisk}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Объект пожара: </Run>
-                        <Run Text="{Binding FileReportFireObj.KindFireObj}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Наименование объекта: </Run>
-                        <Run Text="{Binding FileReportFireObj.NameFireObj}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Этажность здания, эт.: </Run>
-                        <Run Text="{Binding FileReportFireObj.FloorsObj}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Этаж, на котором возник пожар, эт.: </Run>
-                        <Run Text="{Binding FileReportFireObj.FloorWhereFire}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Место возникновения пожара: </Run>
-                        <Run Text="{Binding FileReportFireObj.LocationFire}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Причина пожара: </Run>
-                        <Run Text="{Binding FileReportFireObj.CauseFire}" FontWeight="Bold"/>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>Виновное лицо: </Run>
-                        <Run Text="{Binding FileReportFireObj.GuiltyPerson}" FontWeight="Bold"/>
-                        <Run Text=";"/>
-                        <Run Text="{Binding FileReportFireObj.AttitudePerson}" FontWeight="Bold"/>
-                        <Run Text=";"/>
-                        <Run Text="{Binding FileReportFireObj.StatePerson}" FontWeight="Bold"/>
-                    </TextBlock>
-                </StackPanel>
+                <ScrollViewer>
+                    <StackPanel DataContext="{Binding SelectedFileRep}">
+                        <TextBlock Text="Раздел 1. Общие сведения:" TextDecorations="Underline" FontSize="16px"/>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Код органа (района, населенного пункта) - составителя карточки: </Run>
+                            <Run Text="{Binding FileReportGenInfo.OrgCode}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Дата возникновения пожара (загорания) (дд/мм/гг): </Run>
+                            <Run Text="{Binding FileReportGenInfo.Datefire, StringFormat=d}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Вид населенного пункта; Вид пожарной охраны населенного пункта:</Run>
+                            <Run Text="{Binding FileReportGenInfo.TypesettCode}" FontWeight="Bold"/>
+                            <Run Text=";"/>
+                            <Run Text="{Binding FileReportGenInfo.TypefiresettCode}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock Text="Раздел 2. Объект пожара:" TextDecorations="Underline" FontSize="16px"/>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Субъект малого и среднего предпринимательства: </Run>
+                            <Run Text="{Binding FileReportFireObj.Subject}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Форма собственности: </Run>
+                            <Run Text="{Binding FileReportFireObj.SubTypeOwner}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Категория риска объекта пожара: </Run>
+                            <Run Text="{Binding FileReportFireObj.ObjRisk}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Объект пожара: </Run>
+                            <Run Text="{Binding FileReportFireObj.KindFireObj}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Наименование объекта: </Run>
+                            <Run Text="{Binding FileReportFireObj.NameFireObj}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Этажность здания, эт.: </Run>
+                            <Run Text="{Binding FileReportFireObj.FloorsObj}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Этаж, на котором возник пожар, эт.: </Run>
+                            <Run Text="{Binding FileReportFireObj.FloorWhereFire}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Место возникновения пожара: </Run>
+                            <Run Text="{Binding FileReportFireObj.LocationFire}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Причина пожара: </Run>
+                            <Run Text="{Binding FileReportFireObj.CauseFire}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Виновное лицо: </Run>
+                            <Run Text="{Binding FileReportFireObj.GuiltyPerson}" FontWeight="Bold"/>
+                            <Run Text=";"/>
+                            <Run Text="{Binding FileReportFireObj.AttitudePerson}" FontWeight="Bold"/>
+                            <Run Text=";"/>
+                            <Run Text="{Binding FileReportFireObj.StatePerson}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock Text="Раздел 3. Последствия пожара:" TextDecorations="Underline" FontSize="16px"/>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Погибло людей: всего, чел.</Run>
+                            <Run Text="{Binding FileReportFireConsequence.PeopleDiedAll}" FontWeight="Bold"/>
+                            <Run>детей, чел., </Run>
+                            <Run Text="{Binding FileReportFireConsequence.PeopleDiedKids}" FontWeight="Bold"/>
+                            <Run>работников ПО, чел. </Run>
+                            <Run Text="{Binding FileReportFireConsequence.PeopleDiedWork}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Получили травмы: всего, чел., </Run>
+                            <Run Text="{Binding FileReportFireConsequence.PeopleInjuredAll}" FontWeight="Bold"/>
+                            <Run>детей, чел., </Run>
+                            <Run Text="{Binding FileReportFireConsequence.PeopleInjuredKids}" FontWeight="Bold"/>
+                            <Run>работников ПО, чел. </Run>
+                            <Run Text="{Binding FileReportFireConsequence.PeopleInjuredWork}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Прямой ущерб от пожара, руб:</Run>
+                            <Run Text="{Binding FileReportFireConsequence.MFireDamage}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Здания, сооружения, ед.: уничтожено</Run>
+                            <Run Text="{Binding FileReportFireConsequence.BuildDest}" FontWeight="Bold"/>
+                            <Run>; повреждено</Run>
+                            <Run Text="{Binding FileReportFireConsequence.BuildDest}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Жилые квартиры, ед.: уничтожено</Run>
+                            <Run Text="{Binding FileReportFireConsequence.BuildDest}" FontWeight="Bold"/>
+                            <Run>; повреждено</Run>
+                            <Run Text="{Binding FileReportFireConsequence.BuildDest}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock Text="Раздел 4. Спасено (эвакуировано) на пожаре:" TextDecorations="Underline" FontSize="16px"/>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Людей: спасено, чел.</Run>
+                            <Run Text="{Binding FileReportFireRescued.PeopleSaved}" FontWeight="Bold"/>
+                            <Run>; эвакуировано, чел.</Run>
+                            <Run Text="{Binding FileReportFireRescued.PeopleEvacuated}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Скота: крупного, г.</Run>
+                            <Run Text="{Binding FileReportFireRescued.CattleLarge}" FontWeight="Bold"/>
+                            <Run>; мелкого, г.</Run>
+                            <Run Text="{Binding FileReportFireRescued.CattleSmall}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Автотракторной и др. техники, ед:</Run>
+                            <Run Text="{Binding FileReportFireRescued.Technique}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Материальных ценностей, руб:</Run>
+                            <Run Text="{Binding FileReportFireRescued.MatValues}" FontWeight="Bold"/>
+                        </TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
             </GroupBox>
             
         </Grid>

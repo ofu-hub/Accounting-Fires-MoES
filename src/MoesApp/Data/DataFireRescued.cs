@@ -8,18 +8,18 @@ using MoesApp.Data.Base;
 
 namespace MoesApp.Data
 {
-    internal static class DataFireObj
+    internal static class DataFireRescued
     {
-        public static FireObj? GetFireObjById(int id)
+        public static FireRescued? GetFireRescuedById(int id)
         {
             using (DataBaseContext db = new DataBaseContext())
             {
-                FireObj? fireobj = db.FireObjs.FirstOrDefault(x => x.Id == id);
+                FireRescued? fireres = db.FireRescueds.FirstOrDefault(x => x.Id == id);
 
-                if (fireobj == null)
+                if (fireres == null)
                     return null;
                 else
-                    return fireobj;
+                    return fireres;
             }
         }
     }

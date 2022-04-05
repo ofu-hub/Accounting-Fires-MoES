@@ -41,5 +41,21 @@ namespace MoesApp.Models
                 return DataFireObj.GetFireObjById(FireobjId);
             }
         }
+        [NotMapped]
+        public FireConsequence FileReportFireConsequence
+        {
+            get
+            {
+                return DataFireConsequence.GetFireConsequenceById(FireconsId);
+            }
+        }
+        [NotMapped]
+        public FireRescued FileReportFireRescued
+        {
+            get
+            {
+                return DataFireRescued.GetFireRescuedById(FirerescuedId);
+            }
+        }
     }
 }
