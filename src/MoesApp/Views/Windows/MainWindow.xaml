@@ -117,13 +117,13 @@
                             <Run>Здания, сооружения, ед.: уничтожено</Run>
                             <Run Text="{Binding FileReportFireConsequence.BuildDest}" FontWeight="Bold"/>
                             <Run>; повреждено</Run>
-                            <Run Text="{Binding FileReportFireConsequence.BuildDest}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireConsequence.BuildDam}" FontWeight="Bold"/>
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap">
                             <Run>Жилые квартиры, ед.: уничтожено</Run>
-                            <Run Text="{Binding FileReportFireConsequence.BuildDest}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireConsequence.ApartDest}" FontWeight="Bold"/>
                             <Run>; повреждено</Run>
-                            <Run Text="{Binding FileReportFireConsequence.BuildDest}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireConsequence.ApartDam}" FontWeight="Bold"/>
                         </TextBlock>
                         <TextBlock Text="Раздел 4. Спасено (эвакуировано) на пожаре:" TextDecorations="Underline" FontSize="16px"/>
                         <TextBlock TextWrapping="Wrap">
@@ -145,6 +145,35 @@
                         <TextBlock TextWrapping="Wrap">
                             <Run>Материальных ценностей, руб:</Run>
                             <Run Text="{Binding FileReportFireRescued.MatValues}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock Text="Раздел 5. Развитие и тушение пожара:" TextDecorations="Underline" FontSize="16px"/>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Время обнаружения (час, мин):</Run>
+                            <Run Text="{Binding FileReportFireDevExt.DetectionTime}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Время сообщения (час, мин):</Run>
+                            <Run Text="{Binding FileReportFireDevExt.MessageTime}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Время прибытия 1-го подразделения пожарной охраны (час, мин):</Run>
+                            <Run Text="{Binding FileReportFireDevExt.ArrivalTime1st}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Время локализации (час, мин):</Run>
+                            <Run Text="{Binding FileReportFireDevExt.LocalTime}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Время ликвидации открытого горения (час, мин):</Run>
+                            <Run Text="{Binding FileReportFireDevExt.OpenFireEliTime}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Время ликвидации последствий пожара (час, мин):</Run>
+                            <Run Text="{Binding FileReportFireDevExt.EliFireTime}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>Дата ликвидации:</Run>
+                            <Run Text="{Binding FileReportFireDevExt.LiquidationDate, StringFormat=d}" FontWeight="Bold"/>
                         </TextBlock>
                     </StackPanel>
                 </ScrollViewer>
