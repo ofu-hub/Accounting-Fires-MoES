@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using MoesApp.Data;
 
-namespace WpfApp1.Models
+namespace MoesApp.Models
 {
     public partial class FileReport
     {
@@ -22,5 +24,22 @@ namespace WpfApp1.Models
         public virtual FireRescued Firerescued { get; set; } = null!;
         public virtual GenInfo Geninfo { get; set; } = null!;
         public virtual InfoDeadAInjured Infodai { get; set; } = null!;
+
+        [NotMapped]
+        public GenInfo FileReportGenInfo
+        {
+            get
+            {
+                return DataGenInfo.GetGenInfoById(GeninfoId);
+            }
+        }
+        [NotMapped]
+        public FireObj FileReportFireObj
+        {
+            get
+            {
+                return DataFireObj.GetFireObjById(FireobjId);
+            }
+        }
     }
 }

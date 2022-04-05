@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace WpfApp1.Migrations
+namespace MoesApp.Migrations
 {
     public partial class InitialCreate : Migration
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using WpfApp1.Models;
+using MoesApp.Models;
 
-namespace WpfApp1.Data.Base
+namespace MoesApp.Data.Base
 {
     public partial class DataBaseContext : DbContext
     {

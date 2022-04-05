@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.ObjectModel;
 using MoesApp.Models;
 using MoesApp.Data.Base;
 
 namespace MoesApp.Data
 {
-    internal static class DataFileReport
+    internal static class DataFireObj
     {
-        public static ObservableCollection<FileReport> GetAllFileReports()
+        public static FireObj? GetFireObjById(int id)
         {
             using (DataBaseContext db = new DataBaseContext())
             {
-                var result = new ObservableCollection<FileReport>(db.FileReports.ToList());
-                return result;
+                FireObj? geninfo = db.FireObjs.FirstOrDefault(x => x.Id == id);
+
+                if (geninfo == null)
+                    return null;
+                else
+                    return geninfo;
             }
         }
     }

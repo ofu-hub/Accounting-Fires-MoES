@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using WpfApp1.Data.Base;
+using MoesApp.Data.Base;
 
 #nullable disable
 
-namespace WpfApp1.Migrations
+namespace MoesApp.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
     [Migration("20220404171523_InitialCreate")]

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WpfApp1.Models
+namespace MoesApp.Models
 {
     public partial class FireObj
     {

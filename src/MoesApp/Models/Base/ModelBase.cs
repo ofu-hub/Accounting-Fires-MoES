@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace WpfApp1.Models.Base
+namespace MoesApp.Models.Base
 {
     /// <summary>
     /// Базовый класс модели

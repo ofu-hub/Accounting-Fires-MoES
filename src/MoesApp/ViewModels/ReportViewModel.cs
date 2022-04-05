@@ -1,6 +1,6 @@
-﻿using WpfApp1.ViewModels.Base;
+﻿using MoesApp.ViewModels.Base;
 
-namespace WpfApp1.ViewModels
+namespace MoesApp.ViewModels
 {
     internal class ReportViewModel : ViewModelBase
     {

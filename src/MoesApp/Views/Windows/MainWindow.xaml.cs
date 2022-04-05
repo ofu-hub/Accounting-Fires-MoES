@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using WpfApp1.ViewModels;
+using MoesApp.ViewModels;
 
-namespace WpfApp1.Views.Windows
+namespace MoesApp.Views.Windows
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

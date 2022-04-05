@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WpfApp1.Views.Windows
+namespace MoesApp.Views.Windows
 {
     /// <summary>
     /// Логика взаимодействия для ReportWindow.xaml

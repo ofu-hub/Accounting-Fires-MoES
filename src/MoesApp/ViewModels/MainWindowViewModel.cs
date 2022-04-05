@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using WpfApp1.Data;
-using WpfApp1.Models;
-using WpfApp1.ViewModels.Base;
+using MoesApp.Data;
+using MoesApp.Models;
+using MoesApp.ViewModels.Base;
 
-namespace WpfApp1.ViewModels
+namespace MoesApp.ViewModels
 {
     internal class MainWindowViewModel : ViewModelBase
     {
