@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoesApp.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220406150135_FixMigration")]
-    partial class FixMigration
+    [Migration("20220406165520_adddates")]
+    partial class adddates
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

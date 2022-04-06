@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoesApp.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220406150031_TempMigration")]
-    partial class TempMigration
+    [Migration("20220406165334_temp")]
+    partial class temp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -174,39 +174,9 @@ namespace MoesApp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
-                    b.Property<TimeOnly>("ArrivalTime1st")
-                        .HasMaxLength(4)
-                        .HasColumnType("time without time zone")
-                        .HasColumnName("arrival_time_1st");
-
-                    b.Property<TimeOnly>("DetectionTime")
-                        .HasMaxLength(4)
-                        .HasColumnType("time without time zone")
-                        .HasColumnName("detection_time");
-
-                    b.Property<TimeOnly>("EliFireTime")
-                        .HasMaxLength(4)
-                        .HasColumnType("time without time zone")
-                        .HasColumnName("eli_fire_time");
-
                     b.Property<DateOnly>("LiquidationDate")
                         .HasColumnType("date")
                         .HasColumnName("liquidation_date");
-
-                    b.Property<TimeOnly>("LocalTime")
-                        .HasMaxLength(4)
-                        .HasColumnType("time without time zone")
-                        .HasColumnName("local_time");
-
-                    b.Property<TimeOnly>("MessageTime")
-                        .HasMaxLength(4)
-                        .HasColumnType("time without time zone")
-                        .HasColumnName("message_time");
-
-                    b.Property<TimeOnly>("OpenFireEliTime")
-                        .HasMaxLength(4)
-                        .HasColumnType("time without time zone")
-                        .HasColumnName("open_fire_eli_time");
 
                     b.HasKey("Id");
 
