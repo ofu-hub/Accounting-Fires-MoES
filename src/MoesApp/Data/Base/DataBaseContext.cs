@@ -168,29 +168,23 @@ namespace MoesApp.Data.Base
                     .UseIdentityAlwaysColumn();
 
                 entity.Property(e => e.ArrivalTime1st)
-                    .HasMaxLength(4)
                     .HasColumnName("arrival_time_1st");
 
                 entity.Property(e => e.DetectionTime)
-                    .HasMaxLength(4)
                     .HasColumnName("detection_time");
 
                 entity.Property(e => e.EliFireTime)
-                    .HasMaxLength(4)
                     .HasColumnName("eli_fire_time");
 
                 entity.Property(e => e.LiquidationDate).HasColumnName("liquidation_date");
 
                 entity.Property(e => e.LocalTime)
-                    .HasMaxLength(4)
                     .HasColumnName("local_time");
 
                 entity.Property(e => e.MessageTime)
-                    .HasMaxLength(4)
                     .HasColumnName("message_time");
 
                 entity.Property(e => e.OpenFireEliTime)
-                    .HasMaxLength(4)
                     .HasColumnName("open_fire_eli_time");
             });
 
