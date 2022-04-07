@@ -23,7 +23,7 @@ namespace MoesApp.ViewModels
         }
 
         #endregion
-        #region Данные общих сведений
+        #region Данные "Отчеты"
         private ObservableCollection<FileReport> _FileReports = DataFileReport.GetAllFileReports();
 
         public ObservableCollection<FileReport> FileReports
