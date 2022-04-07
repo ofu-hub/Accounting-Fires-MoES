@@ -176,31 +176,36 @@
                         <TextBlock Text="Раздел 5. Развитие и тушение пожара:" TextDecorations="Underline" FontSize="16px"/>
                         <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
                             <Run>Время обнаружения (час, мин):</Run>
-                            <Run Text="{Binding FileReportFireDevExt.DetectionTime, StringFormat=d}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireDevExt.DetectionTime, StringFormat=t}" FontWeight="Bold"/>
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
                             <Run>Время сообщения (час, мин):</Run>
-                            <Run Text="{Binding FileReportFireDevExt.MessageTime, StringFormat=d}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireDevExt.MessageTime, StringFormat=t}" FontWeight="Bold"/>
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
                             <Run>Время прибытия 1-го подразделения пожарной охраны (час, мин):</Run>
-                            <Run Text="{Binding FileReportFireDevExt.ArrivalTime1st, StringFormat=d}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireDevExt.ArrivalTime1st, StringFormat=t}" FontWeight="Bold"/>
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
                             <Run>Время локализации (час, мин):</Run>
-                            <Run Text="{Binding FileReportFireDevExt.LocalTime, StringFormat=d}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireDevExt.LocalTime, StringFormat=t}" FontWeight="Bold"/>
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
                             <Run>Время ликвидации открытого горения (час, мин):</Run>
-                            <Run Text="{Binding FileReportFireDevExt.OpenFireEliTime, StringFormat=d}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireDevExt.OpenFireEliTime, StringFormat=t}" FontWeight="Bold"/>
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
                             <Run>Время ликвидации последствий пожара (час, мин):</Run>
-                            <Run Text="{Binding FileReportFireDevExt.EliFireTime, StringFormat=d}" FontWeight="Bold"/>
+                            <Run Text="{Binding FileReportFireDevExt.EliFireTime, StringFormat=t}" FontWeight="Bold"/>
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
                             <Run>Дата ликвидации:</Run>
                             <Run Text="{Binding FileReportFireDevExt.LiquidationDate, StringFormat=d}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock Text="Раздел 6. Силы и средства пожаротушения:" TextDecorations="Underline" FontSize="16px"/>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Участники тушения пожара:</Run>
+                            <ListBox ItemsSource="{Binding FileReportFireForcesMean.Firefighters}"/>
                         </TextBlock>
                     </StackPanel>
                 </ScrollViewer>
