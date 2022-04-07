@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoesApp.Data.Base;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoesApp.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220405102230_MigrateFireDevExt")]
+    partial class MigrateFireDevExt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,14 +175,17 @@ namespace MoesApp.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
                     b.Property<TimeOnly>("ArrivalTime1st")
+                        .HasMaxLength(4)
                         .HasColumnType("time without time zone")
                         .HasColumnName("arrival_time_1st");
 
                     b.Property<TimeOnly>("DetectionTime")
+                        .HasMaxLength(4)
                         .HasColumnType("time without time zone")
                         .HasColumnName("detection_time");
 
                     b.Property<TimeOnly>("EliFireTime")
+                        .HasMaxLength(4)
                         .HasColumnType("time without time zone")
                         .HasColumnName("eli_fire_time");
 
@@ -189,14 +194,17 @@ namespace MoesApp.Migrations
                         .HasColumnName("liquidation_date");
 
                     b.Property<TimeOnly>("LocalTime")
+                        .HasMaxLength(4)
                         .HasColumnType("time without time zone")
                         .HasColumnName("local_time");
 
                     b.Property<TimeOnly>("MessageTime")
+                        .HasMaxLength(4)
                         .HasColumnType("time without time zone")
                         .HasColumnName("message_time");
 
                     b.Property<TimeOnly>("OpenFireEliTime")
+                        .HasMaxLength(4)
                         .HasColumnType("time without time zone")
                         .HasColumnName("open_fire_eli_time");
 

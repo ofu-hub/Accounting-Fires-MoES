@@ -57,5 +57,29 @@ namespace MoesApp.Models
                 return DataFireRescued.GetFireRescuedById(FirerescuedId);
             }
         }
+        [NotMapped]
+        public FireDevExt FileReportFireDevExt
+        {
+            get
+            {
+                return DataFireDevExt.GetFireDevExtById(FiredaeId);
+            }
+        }
+        [NotMapped]
+        public FireForcesMean FileReportFireForcesMean
+        {
+            get
+            {
+                return DataFireForcesMean.GetFireForcesMeanById(FireforcId);
+            }
+        }
+        [NotMapped]
+        public InfoDeadAInjured FileReportInfoDeadAInjured
+        {
+            get
+            {
+                return DataInfoDeadAInjured.GetInfoDeadAInjuredById(InfodaiId);
+            }
+        }
     }
 }
