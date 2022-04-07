@@ -19,7 +19,20 @@
             </MenuItem>
         </Menu>
         <TabControl>
-            <TabItem Header="Общие сведения"></TabItem>
+            <TabItem Header="Общие сведения">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock TextWrapping="Wrap" Grid.Row="0">
+                        <Run  FontSize="16px">Код органа (района, населенного пункта) - составителя карточки:</Run>
+                        <TextBox MaxLength="4"></TextBox>
+                    </TextBlock>
+                </Grid>
+            </TabItem>
             <TabItem Header="Объект пожара"></TabItem>
             <TabItem Header="Последствия пожара"></TabItem>
             <TabItem Header="Эвакуировано на пожаре"></TabItem>

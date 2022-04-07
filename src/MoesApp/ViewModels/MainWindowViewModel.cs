@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using MoesApp.Views.Windows;
 using MoesApp.Data;
 using MoesApp.Models;
 using MoesApp.ViewModels.Base;
+using MoesApp.Commands;
 
 namespace MoesApp.ViewModels
 {
@@ -41,6 +43,32 @@ namespace MoesApp.ViewModels
             get => _SelectedFileRep;
             set => Set(ref _SelectedFileRep, value);
         }
+        #endregion
+        #region Команд открытия окна
+
+        private RelayCommand _OpenWindow;
+        public RelayCommand OpenWindow
+        {
+            get
+            {
+                return _OpenWindow ?? new RelayCommand(obj =>
+                {
+                    ShowCreateFileReport();
+                });
+            }
+        }
+
+        #endregion
+        #region Метод открытие окна
+
+        public void ShowCreateFileReport()
+        {
+            ReportWindow newWindow = new ReportWindow();
+            newWindow.Owner = App.Current.MainWindow;
+            newWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            newWindow.ShowDialog();
+        }
+
         #endregion
     }
 }
