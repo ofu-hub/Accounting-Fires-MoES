@@ -71,7 +71,150 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Объект пожара"></TabItem>
+            <TabItem Header="Объект пожара">
+                <ScrollViewer>
+                    <Grid Margin="20 10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Субъект малого и среднего предпринимательства:"/>
+                            <ComboBox Grid.Row="1" Text="" Margin="0,2,554,3" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Форма собственности:"/>
+                            <ComboBox Grid.Row="1" Text="" Margin="0,2,554,3" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Категория риска объекта пожара:"/>
+                            <ComboBox Grid.Row="1" Text="" Margin="0,2,554,3" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Объект пожара:"/>
+                            <ComboBox Grid.Row="1" Text="" Margin="0,2,554,3" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Наименование объекта:"/>
+                            <TextBox Grid.Row="1" Text="" Margin="0,2,10,3" MaxLength="100"/>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Этажность здания, эт.:"/>
+                            <TextBox Grid.Row="1" Text="" Margin="0,2,554,3" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Этаж, на котором возник пожар, эт.:"/>
+                            <TextBox Grid.Row="1" Text="" Margin="0,2,554,3" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="7">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Место возникновения пожара:"/>
+                            <ComboBox Grid.Row="1" Text="" Margin="0,2,554,3" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Причина пожара:"/>
+                            <ComboBox Grid.Row="1" Text="" Margin="0,2,554,3" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Margin="0 5 0 5" Text="Категория виновника пожара:"/>
+                                    <ComboBox Grid.Column="0" Grid.Row="1" Text="" Width="200" Margin="0,0,46,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,211,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Column="1" Grid.Row="0" Margin="0 5 0 5" Text="Отношение виновника пожара к объекту пожара:"/>
+                                    <ComboBox Grid.Row="1" Text="" Width="200" Margin="0,0,80,0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Margin="40,0,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Column="1" Grid.Row="0" Margin="0 5 0 5" Text="Состояние виновника:"/>
+                                    <ComboBox Grid.Column="1" Grid.Row="1" Text="" Width="200" Margin="0,0,46,0"/>
+                                </Grid>
+                            </Grid>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Виновное лицо:"/>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
             <TabItem Header="Последствия пожара"></TabItem>
             <TabItem Header="Эвакуировано на пожаре"></TabItem>
             <TabItem Header="Развитие и тушение пожара"></TabItem>
