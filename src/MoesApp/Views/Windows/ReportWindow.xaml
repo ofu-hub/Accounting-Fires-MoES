@@ -497,7 +497,83 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Развитие и тушение пожара"></TabItem>
+            <TabItem Header="Развитие и тушение пожара">
+                <Grid Margin="10 10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время обнаружения (час:мин):"/>
+                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время сообщения (час:мин):"/>
+                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время прибытия 1-го подразделения пожарной охраны (час:мин):"/>
+                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время локализации (час:мин):"/>
+                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время ликвидации открытого горения (час:мин):"/>
+                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время ликвидации последствий пожара (час:мин):"/>
+                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Дата ликвидации:"/>
+                        <DatePicker Grid.Row="1" Text="" HorizontalAlignment="Left" SelectedDate="" Width="200"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
             <TabItem Header="Силы и средства пожаротушения"></TabItem>
             <TabItem Header="Сведения о погибших и травмированных"></TabItem>
         </TabControl>
