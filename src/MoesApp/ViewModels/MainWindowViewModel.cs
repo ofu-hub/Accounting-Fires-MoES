@@ -174,15 +174,15 @@ namespace MoesApp.ViewModels
             gfx.DrawString("Первичные средства пожаротушения: " + SelectedFileRep.FileReportFireForcesMean.PrimaryFireEquipToStr, font, XBrushes.Black, new XPoint(50, 230));
             // Раздел 7.
             gfx.DrawString("Раздел 7. Сведения о погибших и травмированных:", new XFont("Times New Roman", 14, XFontStyle.Underline), XBrushes.Black, new XPoint(50, 260));
-            gfx.DrawString("Пол погибшего:: " + SelectedFileRep.FileReportInfoDeadAInjured.GenderDeadToStr, font, XBrushes.Black, new XPoint(50, 110));
-            gfx.DrawString("Социальное положение погибшего: " + SelectedFileRep.FileReportInfoDeadAInjured.SocStatusToStr, font, XBrushes.Black, new XPoint(50, 110));
-            gfx.DrawString("Образование погибшего: " + SelectedFileRep.FileReportInfoDeadAInjured.EducationDeadToStr, font, XBrushes.Black, new XPoint(50, 110));
-            gfx.DrawString("Причина гибели: " + SelectedFileRep.FileReportInfoDeadAInjured.CauseDeadToStr, font, XBrushes.Black, new XPoint(50, 110));
-            gfx.DrawString("Условия, способствовавшие гибели: " + SelectedFileRep.FileReportInfoDeadAInjured.TermsDeadToStr, font, XBrushes.Black, new XPoint(50, 110));
-            gfx.DrawString("Момент наступления смерти: " + SelectedFileRep.FileReportInfoDeadAInjured.MomentDeadToStr, font, XBrushes.Black, new XPoint(50, 110));
-            gfx.DrawString("Условия, способствовавшие травмированию: " + SelectedFileRep.FileReportInfoDeadAInjured.TermsInjuryToStr, font, XBrushes.Black, new XPoint(50, 110));
-            gfx.DrawString("Степень тяжести вреда здоровью: " + SelectedFileRep.FileReportInfoDeadAInjured.HarmHealthToStr, font, XBrushes.Black, new XPoint(50, 110));
-            gfx.DrawString("Возраст погибшего: " + SelectedFileRep.FileReportInfoDeadAInjured.AgeDeadToStr, font, XBrushes.Black, new XPoint(50, 110));
+            gfx.DrawString("Пол погибшего:: " + SelectedFileRep.FileReportInfoDeadAInjured.GenderDeadToStr, font, XBrushes.Black, new XPoint(50, 280));
+            gfx.DrawString("Социальное положение погибшего: " + SelectedFileRep.FileReportInfoDeadAInjured.SocStatusToStr, font, XBrushes.Black, new XPoint(50, 300));
+            gfx.DrawString("Образование погибшего: " + SelectedFileRep.FileReportInfoDeadAInjured.EducationDeadToStr, font, XBrushes.Black, new XPoint(50, 320));
+            gfx.DrawString("Причина гибели: " + SelectedFileRep.FileReportInfoDeadAInjured.CauseDeadToStr, font, XBrushes.Black, new XPoint(50, 340));
+            gfx.DrawString("Условия, способствовавшие гибели: " + SelectedFileRep.FileReportInfoDeadAInjured.TermsDeadToStr, font, XBrushes.Black, new XPoint(50, 360));
+            gfx.DrawString("Момент наступления смерти: " + SelectedFileRep.FileReportInfoDeadAInjured.MomentDeadToStr, font, XBrushes.Black, new XPoint(50, 380));
+            gfx.DrawString("Условия, способствовавшие травмированию: " + SelectedFileRep.FileReportInfoDeadAInjured.TermsInjuryToStr, font, XBrushes.Black, new XPoint(50, 400));
+            gfx.DrawString("Степень тяжести вреда здоровью: " + SelectedFileRep.FileReportInfoDeadAInjured.HarmHealthToStr, font, XBrushes.Black, new XPoint(50, 420));
+            gfx.DrawString("Возраст погибшего: " + SelectedFileRep.FileReportInfoDeadAInjured.AgeDeadToStr, font, XBrushes.Black, new XPoint(50, 440));
             // Сохраняем
             pdfDocument.Save("Отчет_Ид№" + SelectedFileRep.Id.ToString() + ".pdf");
         }
