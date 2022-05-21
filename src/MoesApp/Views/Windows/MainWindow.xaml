@@ -16,7 +16,7 @@
                 <MenuItem Header="Удалить отчет"/>
                 <MenuItem Header="Редактировать отчет"/>
                 <Separator/>
-                <MenuItem Header="Сформировать PDF отчет"/>
+                <MenuItem Header="Сформировать PDF отчет" Command="{Binding GeneratePDFFile}"/>
                 <MenuItem Header="Сформировать Word отчет"/>
                 <Separator/>
                 <MenuItem Header="Выход"/>
