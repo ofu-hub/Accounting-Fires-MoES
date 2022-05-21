@@ -575,7 +575,115 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Силы и средства пожаротушения"></TabItem>
-            <TabItem Header="Сведения о погибших и травмированных"></TabItem>
+            <TabItem Header="Сведения о погибших и травмированных">
+                <ScrollViewer>
+                    <Grid Margin="10 10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Число погибших и травмированных людей:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Возраст погибших:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Пол погибших:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Социальное положение погибших:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Образование погибших:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Причина гибели погибших:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Условия, способствовавшие гибели погибших:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="7">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Момент наступления смерти погибших:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Условия, способствовавшие травмированию:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                        <Grid Grid.Row="9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Степень тяжести вреда здоровью:"/>
+                            <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>
