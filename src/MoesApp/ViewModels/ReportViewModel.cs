@@ -1,4 +1,8 @@
-﻿using MoesApp.ViewModels.Base;
+﻿using MoesApp.Views.Windows;
+using MoesApp.Data;
+using MoesApp.Models;
+using MoesApp.ViewModels.Base;
+using MoesApp.Commands;
 
 namespace MoesApp.ViewModels
 {

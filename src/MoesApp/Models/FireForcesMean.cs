@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MoesApp.Models
 {
@@ -23,5 +24,101 @@ namespace MoesApp.Models
         public string[] PrimaryFireEquip { get; set; } = null!;
 
         public virtual ICollection<FileReport> FileReports { get; set; }
+        [NotMapped]
+        public string? FirefightersToStr
+        {
+            get
+            {
+                return String.Join(" ", Firefighters);
+            }
+            set => FirefightersToStr = null;
+        }
+        [NotMapped]
+        public string? TechniqueToStr
+        {
+            get
+            {
+                return String.Join(" ", Technique);
+            }
+            set => TechniqueToStr = null;
+        }
+        [NotMapped]
+        public string? NumTechniqueToStr
+        {
+            get
+            {
+                return String.Join(" ", NumTechnique);
+            }
+            set => NumTechniqueToStr = null;
+        }
+        [NotMapped]
+        public string? IndividProtectToStr
+        {
+            get
+            {
+                return String.Join(" ", IndividProtect);
+            }
+            set => IndividProtectToStr = null;
+        }
+        [NotMapped]
+        public string? WaterOnFireToStr
+        {
+            get
+            {
+                return String.Join(" ", WaterOnFire);
+            }
+            set
+            {
+                WaterOnFireToStr = null;
+            }
+        }
+        [NotMapped]
+        public string? FireExtManagerToStr
+        {
+            get
+            {
+                return String.Join(" ", FireExtManager);
+            }
+            set
+            {
+                FireExtManagerToStr = null;
+            }
+        }
+        [NotMapped]
+        public string? FireFightingHeadToStr
+        {
+            get
+            {
+                return String.Join(" ", FireFightingHead);
+            }
+            set
+            {
+                FireFightingHeadToStr = null;
+            }
+        }
+        [NotMapped]
+        public string? FireExtAgentsToStr
+        {
+            get
+            {
+                return String.Join(" ", FireExtAgents);
+            }
+            set
+            {
+                FireExtAgentsToStr = null;
+            }
+        }
+        [NotMapped]
+        public string? PrimaryFireEquipToStr
+        {
+            get
+            {
+                return String.Join(" ", PrimaryFireEquip);
+            }
+            set
+            {
+                PrimaryFireEquipToStr = null;
+            }
+        }
     }
 }

@@ -18,14 +18,793 @@
                 <MenuItem Header="О программе"/>
             </MenuItem>
         </Menu>
-        <TabControl>
-            <TabItem Header="Общие сведения"></TabItem>
-            <TabItem Header="Объект пожара"></TabItem>
-            <TabItem Header="Последствия пожара"></TabItem>
-            <TabItem Header="Эвакуировано на пожаре"></TabItem>
-            <TabItem Header="Развитие и тушение пожара"></TabItem>
-            <TabItem Header="Силы и средства пожаротушения"></TabItem>
-            <TabItem Header="Сведения о погибших и травмированных"></TabItem>
-        </TabControl>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <TabControl>
+                    <TabItem Header="Общие сведения">
+                        <Grid Margin="10 10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Код органа (района, населенного пункта) - составителя карточки:"/>
+                                <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Дата возникновения пожара (загорания) (дд/мм/гг):"/>
+                                <DatePicker Grid.Row="1" Text="" HorizontalAlignment="Left" SelectedDate="" Width="200"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                </Grid>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <ComboBox Grid.Row="0" Grid.Column="0" Text="" Width="100"/>
+                                    <ComboBox Grid.Row="1" Grid.Column="1" Text="" Width="100" Margin="5 0 0 0"/>
+                                </Grid>
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Вид: населенного пункта; пожарной охраны населенного пункта"/>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Объект пожара">
+                        <ScrollViewer >
+                            <Grid Margin="10 10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Субъект малого и среднего предпринимательства:"/>
+                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Форма собственности:"/>
+                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Категория риска объекта пожара:"/>
+                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Объект пожара:"/>
+                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Наименование объекта:"/>
+                                    <TextBox Grid.Row="1" Text="" MaxLength="100"/>
+                                </Grid>
+                                <Grid Grid.Row="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Этажность здания, эт.:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                </Grid>
+                                <Grid Grid.Row="6">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Этаж, на котором возник пожар, эт.:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                </Grid>
+                                <Grid Grid.Row="7">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Место возникновения пожара:"/>
+                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Причина пожара:"/>
+                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="9">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.9*"/>
+                                            <ColumnDefinition Width="1.2*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Column="0" Grid.Row="0" Margin="0 5 0 5" Text="Категория виновника пожара:"/>
+                                            <ComboBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Width="200"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Column="1" Grid.Row="0" Margin="0 5 0 5" Text="Отношение виновника пожара к объекту пожара:"/>
+                                            <ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="200"/>
+                                        </Grid>
+                                        <Grid Grid.Column="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Column="2" Grid.Row="0" Margin="0 5 0 5" Text="Состояние виновника:"/>
+                                            <ComboBox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="200"/>
+                                        </Grid>
+                                    </Grid>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Виновное лицо:"/>
+                                </Grid>
+                            </Grid>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="Последствия пожара">
+                        <Grid Margin="10 10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Погибло людей:"/>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Всего:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Детей:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Работников:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Получили травмы:"/>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Всего:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Детей:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Работников:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Прямой ущерб от пожара, руб.:"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="12"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Здания, сооружения, ед.:"/>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Уничтожено:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Повреждено:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Жилые квартиры, ед.:"/>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Уничтожено:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Повреждено:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Эвакуировано на пожаре">
+                        <Grid Margin="10 10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Людей:"/>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Спасено, чел.:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Эвакуировано, чел.:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Скота:"/>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Крупного, г.:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Мелкого, г.:"/>
+                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Автотракторной и др. техники, ед.:"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Материальных ценностей, руб.:"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="12"/>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Развитие и тушение пожара">
+                        <Grid Margin="10 10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время обнаружения (час:мин):"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время сообщения (час:мин):"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время прибытия 1-го подразделения пожарной охраны (час:мин):"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время локализации (час:мин):"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время ликвидации открытого горения (час:мин):"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время ликвидации последствий пожара (час:мин):"/>
+                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                            </Grid>
+                            <Grid Grid.Row="6">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Дата ликвидации:"/>
+                                <DatePicker Grid.Row="1" Text="" HorizontalAlignment="Left" SelectedDate="" Width="200"/>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Силы и средства пожаротушения">
+                        <ScrollViewer>
+                            <Grid Margin="10 10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Участники тушения пожара:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Техника, прибывшая к месту пожара:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Количество техники, ед.:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Средства индивидуальной защиты органов дыхания:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Водоснабжение на пожаре:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Руководитель тушения пожара:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="6">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Организация штаба пожаротушения:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="7">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Выезд следственно-оперативной группы; был (1), не было (2):"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="1"/>
+                                </Grid>
+                                <Grid Grid.Row="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Огнетушащие средства:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="9">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Первичные средства пожаротушения:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                            </Grid>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="Сведения о погибших и травмированных">
+                        <ScrollViewer>
+                            <Grid Margin="10 10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Число погибших и травмированных людей:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Возраст погибших:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Пол погибших:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Социальное положение погибших:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Образование погибших:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Причина гибели погибших:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="6">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Условия, способствовавшие гибели погибших:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="7">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Момент наступления смерти погибших:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Условия, способствовавшие травмированию:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                                <Grid Grid.Row="9">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Степень тяжести вреда здоровью:"/>
+                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                </Grid>
+                            </Grid>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Button Content="Добавить отчет" FontSize="14px"/>
+            </Grid>
+        </Grid>
     </DockPanel>
 </Window>

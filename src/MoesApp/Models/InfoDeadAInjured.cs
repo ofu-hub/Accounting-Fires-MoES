@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MoesApp.Models
 {
@@ -22,5 +23,86 @@ namespace MoesApp.Models
         public string[] AgeDead { get; set; } = null!;
 
         public virtual ICollection<FileReport> FileReports { get; set; }
+        [NotMapped]
+        public string? GenderDeadToStr
+        {
+            get
+            {
+                return String.Join(" ", GenderDead);
+            }
+            set => GenderDeadToStr = null;
+        }
+        [NotMapped]
+        public string? SocStatusToStr
+        {
+            get
+            {
+                return String.Join(" ", SocStatus);
+            }
+            set => SocStatusToStr = null;
+        }
+        [NotMapped]
+        public string? EducationDeadToStr
+        {
+            get
+            {
+                return String.Join(" ", EducationDead);
+            }
+            set => EducationDeadToStr = null;
+        }
+        [NotMapped]
+        public string? CauseDeadToStr
+        {
+            get
+            {
+                return String.Join(" ", CauseDead);
+            }
+            set => CauseDeadToStr = null;
+        }
+        [NotMapped]
+        public string? TermsDeadToStr
+        {
+            get
+            {
+                return String.Join(" ", TermsDead);
+            }
+            set => TermsDeadToStr = null;
+        }
+        [NotMapped]
+        public string? MomentDeadToStr
+        {
+            get
+            {
+                return String.Join(" ", MomentDead);
+            }
+            set => MomentDeadToStr = null;
+        }
+        [NotMapped]
+        public string? TermsInjuryToStr
+        {
+            get
+            {
+                return String.Join(" ", TermsInjury);
+            }
+            set => TermsInjuryToStr = null;
+        }
+        [NotMapped]
+        public string? HarmHealthToStr
+        {
+            get
+            {
+                return String.Join(" ", HarmHealth);
+            }
+            set => HarmHealthToStr = null;
+        }
+        [NotMapped]
+        public string? AgeDeadToStr
+        {
+            get
+            {
+                return String.Join(" ", AgeDead);
+            }
+            set => AgeDeadToStr = null;
+        }
     }
 }
