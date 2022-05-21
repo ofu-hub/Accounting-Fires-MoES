@@ -205,7 +205,80 @@
                         <TextBlock Text="Раздел 6. Силы и средства пожаротушения:" TextDecorations="Underline" FontSize="16px"/>
                         <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
                             <Run>Участники тушения пожара:</Run>
-                            <ListBox ItemsSource="{Binding FileReportFireForcesMean.Firefighters}"/>
+                            <Run Text="{Binding FileReportFireForcesMean.FirefightersToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Техника, прибывшая к месту пожара:</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.TechniqueToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Количество техники, ед.:</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.NumTechniqueToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Средства индивидуальной защиты органов дыхания:</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.IndividProtectToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Водоснабжение на пожаре:</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.WaterOnFireToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Руководитель тушения пожара:</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.FireExtManagerToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Организация штаба пожаротушения:</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.FireFightingHeadToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Выезд следственно-оперативной группы; был (1), не было (2):</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.InvestigativeTeam}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Огнетушащие средства:</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.FireExtAgentsToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Первичные средства пожаротушения:</Run>
+                            <Run Text="{Binding FileReportFireForcesMean.PrimaryFireEquipToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock Text="Раздел 7. Сведения о погибших и травмированных:" TextDecorations="Underline" FontSize="16px"/>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Пол погибшего:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.GenderDeadToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Социальное положение погибшего:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.SocStatusToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Образование погибшего:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.EducationDeadToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Причина гибели:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.CauseDeadToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Условия, способствовавшие гибели:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.TermsDeadToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Момент наступления смерти:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.MomentDeadToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Условия, способствовавшие травмированию:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.TermsInjuryToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Степень тяжести вреда здоровью:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.HarmHealthToStr}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0 3 0 3" FontSize="14px">
+                            <Run>Возраст погибшего:</Run>
+                            <Run Text="{Binding FileReportInfoDeadAInjured.AgeDeadToStr}" FontWeight="Bold"/>
                         </TextBlock>
                     </StackPanel>
                 </ScrollViewer>
