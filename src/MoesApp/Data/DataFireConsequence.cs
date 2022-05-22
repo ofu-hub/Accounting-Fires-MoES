@@ -44,7 +44,7 @@ namespace MoesApp.Data
         /// <returns>Результат</returns>
         public static string CreateFireConsequence(string peopleDiedAll, string peopleDiedKids, string peopleDiedWork, 
                                                     string peopleInjuredAll, string peopleInjuredKids, string peopleInjuredWork,
-                                                    decimal mFireDamage, string buildDest, string buildDam, string apartDest, string apartDam)
+                                                    string mFireDamage, string buildDest, string buildDam, string apartDest, string apartDam)
         {
             string result = "Ошибка!";
             using (DataBaseContext db = new DataBaseContext())
@@ -57,7 +57,7 @@ namespace MoesApp.Data
                     PeopleInjuredAll = peopleInjuredAll,
                     PeopleInjuredKids = peopleInjuredKids,
                     PeopleInjuredWork = peopleInjuredWork,
-                    MFireDamage = mFireDamage,
+                    MFireDamage = Convert.ToDecimal(mFireDamage),
                     BuildDest = buildDest,
                     BuildDam = buildDam,
                     ApartDest = apartDest,
@@ -103,7 +103,7 @@ namespace MoesApp.Data
         /// <returns>Результат</returns>
         public static string EditFireConsequence(FireConsequence oldFireConsequence, string peopleDiedAll, string peopleDiedKids, string peopleDiedWork,
                                                     string peopleInjuredAll, string peopleInjuredKids, string peopleInjuredWork,
-                                                    decimal mFireDamage, string buildDest, string buildDam, string apartDest, string apartDam)
+                                                    string mFireDamage, string buildDest, string buildDam, string apartDest, string apartDam)
         {
             string result = "Ошибка!";
             using (DataBaseContext db = new DataBaseContext())
@@ -115,7 +115,7 @@ namespace MoesApp.Data
                 newFireConsequence.PeopleInjuredAll = peopleInjuredAll;
                 newFireConsequence.PeopleInjuredKids = peopleInjuredKids;
                 newFireConsequence.PeopleInjuredWork = peopleInjuredWork;
-                newFireConsequence.MFireDamage = mFireDamage;
+                newFireConsequence.MFireDamage = Convert.ToDecimal(mFireDamage);
                 newFireConsequence.BuildDest = buildDest;
                 newFireConsequence.BuildDam = buildDam;
                 newFireConsequence.ApartDest = apartDest;
