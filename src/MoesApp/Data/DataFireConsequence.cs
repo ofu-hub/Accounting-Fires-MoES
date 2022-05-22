@@ -85,6 +85,22 @@ namespace MoesApp.Data
             }
             return result;
         }
+        /// <summary>
+        /// Редактирование последствий пожара
+        /// </summary>
+        /// <param name="oldFireConsequence"></param>
+        /// <param name="peopleDiedAll"></param>
+        /// <param name="peopleDiedKids"></param>
+        /// <param name="peopleDiedWork"></param>
+        /// <param name="peopleInjuredAll"></param>
+        /// <param name="peopleInjuredKids"></param>
+        /// <param name="peopleInjuredWork"></param>
+        /// <param name="mFireDamage"></param>
+        /// <param name="buildDest"></param>
+        /// <param name="buildDam"></param>
+        /// <param name="apartDest"></param>
+        /// <param name="apartDam"></param>
+        /// <returns>Результат</returns>
         public static string EditFireConsequence(FireConsequence oldFireConsequence, string peopleDiedAll, string peopleDiedKids, string peopleDiedWork,
                                                     string peopleInjuredAll, string peopleInjuredKids, string peopleInjuredWork,
                                                     decimal mFireDamage, string buildDest, string buildDam, string apartDest, string apartDam)
