@@ -83,7 +83,21 @@ namespace MoesApp.Data
             }
             return result;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="oldFireForcesMean"></param>
+        /// <param name="firefighters"></param>
+        /// <param name="technique"></param>
+        /// <param name="numTechnique"></param>
+        /// <param name="individProtect"></param>
+        /// <param name="waterOnFire"></param>
+        /// <param name="fireExtManager"></param>
+        /// <param name="fireFightingHead"></param>
+        /// <param name="investigativeTeam"></param>
+        /// <param name="fireExtAgents"></param>
+        /// <param name="primaryFireEquip"></param>
+        /// <returns></returns>
         public static string EditFireForcesMean(FireForcesMean oldFireForcesMean, string firefighters, string technique, string numTechnique,
                                                     string individProtect, string waterOnFire, string fireExtManager, string fireFightingHead, 
                                                     string investigativeTeam, string fireExtAgents, string primaryFireEquip)
