@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:MoesApp.ViewModels"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="{Binding Title}"
         Height="450" Width="800">
     <Window.DataContext>
@@ -32,6 +33,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
@@ -40,19 +42,40 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Код органа (района, населенного пункта) - составителя карточки:"/>
-                                <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Заголовок отчета:"/>
+                                <TextBox Grid.Row="1" Text="{Binding name}" HorizontalAlignment="Left" Width="200"/>
                             </Grid>
+                            
                             <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Дата возникновения пожара (загорания) (дд/мм/гг):"/>
-                                <DatePicker Grid.Row="1" Text="" HorizontalAlignment="Left" SelectedDate="" Width="200"/>
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Код органа (района, населенного пункта) - составителя карточки:"/>
+                                <ComboBox Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="orgCode_SelectionChanged">
+                                    <ComboBoxItem Content="Главное управление МЧС России по Астраханской области"/>
+                                    <ComboBoxItem Content="Северо-каспийское управление Аварийно-спасательной Подготовки и Подводно-технических Работ"/>
+                                    <ComboBoxItem Content="Спасательная Служба на Воде, МЧС"/>
+                                    <ComboBoxItem Content="Волгоспас"/>
+                                </ComboBox>
+                                <ComboBox Visibility="Hidden" Name="orgCode" SelectedValuePath="Content" SelectedValue="{Binding orgCode}">
+                                    <ComboBoxItem Content="1011"/>
+                                    <ComboBoxItem Content="1012"/>
+                                    <ComboBoxItem Content="1013"/>
+                                    <ComboBoxItem Content="1021"/>
+                                </ComboBox>
                             </Grid>
                             <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Дата возникновения пожара (загорания) (дд/мм/гг):"/>
+                                <DatePicker Grid.Row="1" SelectedDate="{Binding dateFire}" HorizontalAlignment="Left" Width="200"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -71,8 +94,44 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <ComboBox Grid.Row="0" Grid.Column="0" Text="" Width="100"/>
-                                    <ComboBox Grid.Row="1" Grid.Column="1" Text="" Width="100" Margin="5 0 0 0"/>
+                                    <ComboBox Grid.Row="0" Grid.Column="0" Width="100" SelectionChanged="typeCode_SelectionChanged">
+                                        <ComboBoxItem Content="Город"/>
+                                        <ComboBoxItem Content="Населенный пункт городского типа"/>
+                                        <ComboBoxItem Content="Сельский населенный пункт (село, деревня, станица, хутор и др.)"/>
+                                        <ComboBoxItem Content="Станция"/>
+                                        <ComboBoxItem Content="Разъезд, перегон"/>
+                                        <ComboBoxItem Content="Вне территории населенного пункта"/>
+                                        <ComboBoxItem Content="Вахтовый поселок"/>
+                                        <ComboBoxItem Content="Жилой поселок при станции"/>
+                                    </ComboBox>
+                                    <ComboBox Visibility="Hidden" Name="typeCode" SelectedValuePath="Content" SelectedValue="{Binding typeCode}">
+                                        <ComboBoxItem Content="1"/>
+                                        <ComboBoxItem Content="2"/>
+                                        <ComboBoxItem Content="3"/>
+                                        <ComboBoxItem Content="4"/>
+                                        <ComboBoxItem Content="5"/>
+                                        <ComboBoxItem Content="6"/>
+                                        <ComboBoxItem Content="7"/>
+                                        <ComboBoxItem Content="8"/>
+                                    </ComboBox>
+                                    <ComboBox Grid.Row="1" Grid.Column="1" Width="100" Margin="5 0 0 0" SelectionChanged="typeFireCode_SelectionChanged">
+                                        <ComboBoxItem Content="Государственная федеральная противопожарная служба"/>
+                                        <ComboBoxItem Content="Государственная противопожарная служба субъекта Российской Федерации"/>
+                                        <ComboBoxItem Content="Ведомственная пожарная охрана"/>
+                                        <ComboBoxItem Content="Добровольная пожарная охрана"/>
+                                        <ComboBoxItem Content="Муниципальная пожарная охрана"/>
+                                        <ComboBoxItem Content="Частная пожарная охрана"/>
+                                        <ComboBoxItem Content="Не охранялся"/>
+                                    </ComboBox>
+                                    <ComboBox Visibility="Hidden" Name="typeFireCode" SelectedValuePath="Content" SelectedValue="{Binding typeFireCode}">
+                                        <ComboBoxItem Content="1"/>
+                                        <ComboBoxItem Content="2"/>
+                                        <ComboBoxItem Content="3"/>
+                                        <ComboBoxItem Content="4"/>
+                                        <ComboBoxItem Content="5"/>
+                                        <ComboBoxItem Content="6"/>
+                                        <ComboBoxItem Content="7"/>
+                                    </ComboBox>
                                 </Grid>
                                 <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Вид: населенного пункта; пожарной охраны населенного пункта"/>
                             </Grid>
@@ -101,7 +160,20 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Субъект малого и среднего предпринимательства:"/>
-                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <ComboBox Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="subjectCode_SelectionChanged">
+                                        <ComboBoxItem Content="Микропредприятие"/>
+                                        <ComboBoxItem Content="Малое предприятие"/>
+                                        <ComboBoxItem Content="Среднее предприятие"/>
+                                        <ComboBoxItem Content="Хозяйствующий субъект"/>
+                                        <ComboBoxItem Content="Категорию субъекта установить не удалось"/>
+                                    </ComboBox>
+                                    <ComboBox Visibility="Hidden" Name="subjectCode" SelectedValuePath="Content" SelectedValue="{Binding subjectCode}">
+                                        <ComboBoxItem Content="1"/>
+                                        <ComboBoxItem Content="2"/>
+                                        <ComboBoxItem Content="3"/>
+                                        <ComboBoxItem Content="4"/>
+                                        <ComboBoxItem Content="5"/>
+                                    </ComboBox>
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <Grid.RowDefinitions>
@@ -110,7 +182,42 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Форма собственности:"/>
-                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <ComboBox Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="subTypeOwnerCode_SelectionChanged">
+                                        <ComboBoxItem Content="Федеральная собственность"/>
+                                        <ComboBoxItem Content="Собственность субъекта Российской Федерации"/>
+                                        <ComboBoxItem Content="Муниципальная собственность"/>
+                                        <ComboBoxItem Content="Частная собственность"/>
+                                        <ComboBoxItem Content="Смешанная российская собственность"/>
+                                        <ComboBoxItem Content="Собственность российских граждан, постоянно проживающих за границей"/>
+                                        <ComboBoxItem Content="Собственность потребительской кооперации"/>
+                                        <ComboBoxItem Content="Иностранная собственность"/>
+                                        <ComboBoxItem Content="Совместная российская и иностранная собственность"/>
+                                        <ComboBoxItem Content="Иная смешанная российская собственность"/>
+                                        <ComboBoxItem Content="Собственность благотворительных организаций"/>
+                                        <ComboBoxItem Content="Собственность политических общественных объединений"/>
+                                        <ComboBoxItem Content="Собственность профессиональных союзов"/>
+                                        <ComboBoxItem Content="Собственность общественных объединений"/>
+                                        <ComboBoxItem Content="Собственность религиозных объединений"/>
+                                        <ComboBoxItem Content="Вид формы собственности не установлен"/>
+                                    </ComboBox>
+                                    <ComboBox Visibility="Hidden" Name="subTypeOwnerCode" SelectedValuePath="Content" SelectedValue="{Binding subTypeOwnerCode}">
+                                        <ComboBoxItem Content="12"/>
+                                        <ComboBoxItem Content="13"/>
+                                        <ComboBoxItem Content="14"/>
+                                        <ComboBoxItem Content="16"/>
+                                        <ComboBoxItem Content="17"/>
+                                        <ComboBoxItem Content="18"/>
+                                        <ComboBoxItem Content="19"/>
+                                        <ComboBoxItem Content="20"/>
+                                        <ComboBoxItem Content="30"/>
+                                        <ComboBoxItem Content="49"/>
+                                        <ComboBoxItem Content="50"/>
+                                        <ComboBoxItem Content="51"/>
+                                        <ComboBoxItem Content="52"/>
+                                        <ComboBoxItem Content="53"/>
+                                        <ComboBoxItem Content="54"/>
+                                        <ComboBoxItem Content="99"/>
+                                    </ComboBox>
                                 </Grid>
                                 <Grid Grid.Row="2">
                                     <Grid.RowDefinitions>
@@ -119,7 +226,24 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Категория риска объекта пожара:"/>
-                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <ComboBox Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="objRiskCode_SelectionChanged">
+                                        <ComboBoxItem Content="Чрезвычайно высокий риск"/>
+                                        <ComboBoxItem Content="Высокий риск"/>
+                                        <ComboBoxItem Content="Значительный риск"/>
+                                        <ComboBoxItem Content="Средний риск"/>
+                                        <ComboBoxItem Content="Умеренный риск"/>
+                                        <ComboBoxItem Content="Низкий риск"/>
+                                        <ComboBoxItem Content="Не подлежит категорированию"/>
+                                    </ComboBox>
+                                    <ComboBox Visibility="Hidden" Name="objRiskCode" SelectedValuePath="Content" SelectedValue="{Binding objRiskCode}">
+                                        <ComboBoxItem Content="5"/>
+                                        <ComboBoxItem Content="10"/>
+                                        <ComboBoxItem Content="20"/>
+                                        <ComboBoxItem Content="30"/>
+                                        <ComboBoxItem Content="40"/>
+                                        <ComboBoxItem Content="50"/>
+                                        <ComboBoxItem Content="99"/>
+                                    </ComboBox>
                                 </Grid>
                                 <Grid Grid.Row="3">
                                     <Grid.RowDefinitions>
@@ -128,7 +252,28 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Объект пожара:"/>
-                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <ComboBox Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="kindFireObjCode_SelectionChanged">
+                                        <ComboBoxItem Content="Садовый дом, дача и др."/>
+                                        <ComboBoxItem Content="Вагончик для жилья, дом мобильного типа, палатка и другое строение"/>
+                                        <ComboBoxItem Content="Надворная постройка"/>
+                                        <ComboBoxItem Content="Прочие здания, постройки"/>
+                                        <ComboBoxItem Content="Ограждение, забор на территории домовладения"/>
+                                        <ComboBoxItem Content="Одноквартирный жилой дом"/>
+                                        <ComboBoxItem Content="Многоквартирный жилой дом"/>
+                                        <ComboBoxItem Content="Гараж, тент-укрытие и т.д. на территории домовладения"/>
+                                        <ComboBoxItem Content="Баня, сауна на территории домовладения"/>
+                                    </ComboBox>
+                                    <ComboBox Visibility="Hidden" Name="kindFireObjCode" SelectedValuePath="Content" SelectedValue="{Binding kindFireObjCode}">
+                                        <ComboBoxItem Content="272"/>
+                                        <ComboBoxItem Content="273"/>
+                                        <ComboBoxItem Content="274"/>
+                                        <ComboBoxItem Content="275"/>
+                                        <ComboBoxItem Content="277"/>
+                                        <ComboBoxItem Content="282"/>
+                                        <ComboBoxItem Content="283"/>
+                                        <ComboBoxItem Content="284"/>
+                                        <ComboBoxItem Content="285"/>
+                                    </ComboBox>
                                 </Grid>
                                 <Grid Grid.Row="4">
                                     <Grid.RowDefinitions>
@@ -137,7 +282,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Наименование объекта:"/>
-                                    <TextBox Grid.Row="1" Text="" MaxLength="100"/>
+                                    <TextBox Grid.Row="1" Text="{Binding nameFireObjCode}" MaxLength="100"/>
                                 </Grid>
                                 <Grid Grid.Row="5">
                                     <Grid.RowDefinitions>
@@ -146,7 +291,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Этажность здания, эт.:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    <TextBox Grid.Row="1" Text="{Binding floorsObjCode}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
                                 </Grid>
                                 <Grid Grid.Row="6">
                                     <Grid.RowDefinitions>
@@ -155,7 +300,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Этаж, на котором возник пожар, эт.:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    <TextBox Grid.Row="1" Text="{Binding floorWhereFireCode}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
                                 </Grid>
                                 <Grid Grid.Row="7">
                                     <Grid.RowDefinitions>
@@ -164,7 +309,26 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Место возникновения пожара:"/>
-                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <ComboBox Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="locationFireCode_SelectionChanged">
+                                        <ComboBoxItem Content="Гардероб, раздевалка"/>
+                                        <ComboBoxItem Content="Курительная комната"/>
+                                        <ComboBoxItem Content="Подсобное помещение"/>
+                                        <ComboBoxItem Content="Балкон, лоджия"/>
+                                        <ComboBoxItem Content="Комната, жилое, спальное помещение, палата"/>
+                                        <ComboBoxItem Content="Коридор"/>
+                                        <ComboBoxItem Content="Ванная, душевая, туалет"/>
+                                        <ComboBoxItem Content="Кухня"/>
+                                    </ComboBox>
+                                    <ComboBox Visibility="Hidden" Name="locationFireCode" SelectedValuePath="Content" SelectedValue="{Binding locationFireCode}">
+                                        <ComboBoxItem Content="11"/>
+                                        <ComboBoxItem Content="21"/>
+                                        <ComboBoxItem Content="34"/>
+                                        <ComboBoxItem Content="41"/>
+                                        <ComboBoxItem Content="42"/>
+                                        <ComboBoxItem Content="44"/>
+                                        <ComboBoxItem Content="43"/>
+                                        <ComboBoxItem Content="45"/>
+                                    </ComboBox>
                                 </Grid>
                                 <Grid Grid.Row="8">
                                     <Grid.RowDefinitions>
@@ -173,7 +337,18 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Причина пожара:"/>
-                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <ComboBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" SelectionChanged="causeFireCode_SelectionChanged">
+                                        <ComboBoxItem Content="Неустановленные причины"/>
+                                        <ComboBoxItem Content="Шалость с огнем детей"/>
+                                        <ComboBoxItem Content="Неосторожность при курении"/>
+                                        <ComboBoxItem Content="Нарушение правил пожарной безопасности"/>
+                                    </ComboBox>
+                                    <ComboBox Visibility="Hidden" Name="causeFireCode" SelectedValuePath="Content" SelectedValue="{Binding causeFireCode}">
+                                        <ComboBoxItem Content="27"/>
+                                        <ComboBoxItem Content="24"/>
+                                        <ComboBoxItem Content="22"/>
+                                        <ComboBoxItem Content="51"/>
+                                    </ComboBox>
                                 </Grid>
                                 <Grid Grid.Row="9">
                                     <Grid.RowDefinitions>
@@ -195,7 +370,22 @@
                                             </Grid.RowDefinitions>
 
                                             <TextBlock Grid.Column="0" Grid.Row="0" Margin="0 5 0 5" Text="Категория виновника пожара:"/>
-                                            <ComboBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Width="200"/>
+                                            <ComboBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="guiltyPersonCode_SelectionChanged">
+                                                <ComboBoxItem Content="Домохозяйка (домработница)"/>
+                                                <ComboBoxItem Content="Служащий"/>
+                                                <ComboBoxItem Content="Пенсионер"/>
+                                                <ComboBoxItem Content="Инвалид"/>
+                                                <ComboBoxItem Content="ВИНОВНОЕ ЛИЦО НЕ УСМАТРИВАЕТСЯ"/>
+                                                <ComboBoxItem Content="ВИНОВНОЕ ЛИЦО НЕ УСТАНОВЛЕНО"/>
+                                            </ComboBox>
+                                            <ComboBox Visibility="Hidden" Name="guiltyPersonCode" SelectedValuePath="Content" SelectedValue="{Binding guiltyPersonCode}">
+                                                <ComboBoxItem Content="22"/>
+                                                <ComboBoxItem Content="33"/>
+                                                <ComboBoxItem Content="17"/>
+                                                <ComboBoxItem Content="23"/>
+                                                <ComboBoxItem Content="29"/>
+                                                <ComboBoxItem Content="99"/>
+                                            </ComboBox>
                                         </Grid>
                                         <Grid Grid.Column="1">
                                             <Grid.RowDefinitions>
@@ -204,7 +394,18 @@
                                             </Grid.RowDefinitions>
 
                                             <TextBlock Grid.Column="1" Grid.Row="0" Margin="0 5 0 5" Text="Отношение виновника пожара к объекту пожара:"/>
-                                            <ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="200"/>
+                                            <ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="attitudePersonCode_SelectionChanged">
+                                                <ComboBoxItem Content="Владелец имущества (объекта пожара)"/>
+                                                <ComboBoxItem Content="Не установлено"/>
+                                                <ComboBoxItem Content="Постоянно проживающий на территории объекта пожара"/>
+                                                <ComboBoxItem Content="Постороннее лицо"/>
+                                            </ComboBox>
+                                            <ComboBox Visibility="Hidden" Name="attitudePersonCode" SelectedValuePath="Content" SelectedValue="{Binding attitudePersonCode}">
+                                                <ComboBoxItem Content="88"/>
+                                                <ComboBoxItem Content="30"/>
+                                                <ComboBoxItem Content="12"/>
+                                                <ComboBoxItem Content="19"/>
+                                            </ComboBox>
                                         </Grid>
                                         <Grid Grid.Column="2">
                                             <Grid.RowDefinitions>
@@ -213,7 +414,16 @@
                                             </Grid.RowDefinitions>
 
                                             <TextBlock Grid.Column="2" Grid.Row="0" Margin="0 5 0 5" Text="Состояние виновника:"/>
-                                            <ComboBox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="200"/>
+                                            <ComboBox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="200" SelectionChanged="statePersonCode_SelectionChanged">
+                                                <ComboBoxItem Content="Виновник пожара находился в состоянии алкогольного, наркотического или иного токсического опьянения"/>
+                                                <ComboBoxItem Content="Виновник пожара не находился в состоянии алкогольного, наркотического или иного токсического опьянения"/>
+                                                <ComboBoxItem Content="Состояние виновника пожара не установлено"/>
+                                            </ComboBox>
+                                            <ComboBox Visibility="Hidden" Name="statePersonCode" SelectedValuePath="Content" SelectedValue="{Binding statePersonCode}">
+                                                <ComboBoxItem Content="1"/>
+                                                <ComboBoxItem Content="2"/>
+                                                <ComboBoxItem Content="3"/>
+                                            </ComboBox>
                                         </Grid>
                                     </Grid>
 
@@ -223,187 +433,189 @@
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="Последствия пожара">
-                        <Grid Margin="10 10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0">
+                        <ScrollViewer>
+                            <Grid Margin="10 10">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Погибло людей:"/>
+                                <Grid Grid.Row="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Погибло людей:"/>
+
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Всего:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding peopleDiedAll}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Детей:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding peopleDiedKids}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Работников:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding peopleDiedWork}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
                                 <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                    <Grid Grid.Column="0">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Получили травмы:"/>
 
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Всего:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Всего:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding peopleInjuredAll}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Детей:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding peopleInjuredKids}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Работников:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding peopleInjuredWork}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
                                     </Grid>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                    <Grid Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Прямой ущерб от пожара, руб.:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding mFireDamage}" HorizontalAlignment="Left" Width="200" MaxLength="12"/>
+                                </Grid>
+                                <Grid Grid.Row="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Детей:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Здания, сооружения, ед.:"/>
+
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.5*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Уничтожено:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding buildDest}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Повреждено:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding buildDam}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
                                     </Grid>
+                                </Grid>
+                                <Grid Grid.Row="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                    <Grid Grid.Column="2">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Жилые квартиры, ед.:"/>
 
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Работников:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.5*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Уничтожено:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding apartDest}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Повреждено:"/>
+                                            <TextBox Grid.Row="1" Text="{Binding apartDam}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid Grid.Row="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Получили травмы:"/>
-
-                                <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid Grid.Column="0">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Всего:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
-                                    </Grid>
-
-                                    <Grid Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Детей:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
-                                    </Grid>
-
-                                    <Grid Grid.Column="2">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Работников:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid Grid.Row="2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Прямой ущерб от пожара, руб.:"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="12"/>
-                            </Grid>
-                            <Grid Grid.Row="3">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Здания, сооружения, ед.:"/>
-
-                                <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid Grid.Column="0">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Уничтожено:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
-                                    </Grid>
-
-                                    <Grid Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Повреждено:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid Grid.Row="4">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Жилые квартиры, ед.:"/>
-
-                                <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid Grid.Column="0">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Уничтожено:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
-                                    </Grid>
-
-                                    <Grid Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Повреждено:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                        </ScrollViewer>
                     </TabItem>
                     <TabItem Header="Эвакуировано на пожаре">
                         <Grid Margin="10 10">
@@ -435,7 +647,7 @@
                                         </Grid.RowDefinitions>
 
                                         <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Спасено, чел.:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
+                                        <TextBox Grid.Row="1" Text="{Binding peopleSaved}" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
                                     </Grid>
 
                                     <Grid Grid.Column="1">
@@ -445,7 +657,7 @@
                                         </Grid.RowDefinitions>
 
                                         <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Эвакуировано, чел.:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        <TextBox Grid.Row="1" Text="{Binding peopleEvacuated}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -470,7 +682,7 @@
                                         </Grid.RowDefinitions>
 
                                         <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Крупного, г.:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
+                                        <TextBox Grid.Row="1" Text="{Binding cattleLarge}" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
                                     </Grid>
 
                                     <Grid Grid.Column="1">
@@ -480,7 +692,7 @@
                                         </Grid.RowDefinitions>
 
                                         <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Мелкого, г.:"/>
-                                        <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
+                                        <TextBox Grid.Row="1" Text="{Binding cattleSmall}" HorizontalAlignment="Left" Width="200" MaxLength="3"/>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -491,7 +703,7 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Автотракторной и др. техники, ед.:"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
+                                <TextBox Grid.Row="1" Text="{Binding technique}" HorizontalAlignment="Left" Width="200" MaxLength="4"/>
                             </Grid>
                             <Grid Grid.Row="3">
                                 <Grid.RowDefinitions>
@@ -500,86 +712,88 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Материальных ценностей, руб.:"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="12"/>
+                                <TextBox Grid.Row="1" Text="{Binding matValues}" HorizontalAlignment="Left" Width="200" MaxLength="12"/>
                             </Grid>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Развитие и тушение пожара">
-                        <Grid Margin="10 10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0">
+                        <ScrollViewer>
+                            <Grid Margin="10 10">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время обнаружения (час:мин):"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время сообщения (час:мин):"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
-                            </Grid>
-                            <Grid Grid.Row="2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время обнаружения (час:мин):"/>
+                                    <TextBox Grid.Row="1" Text="{Binding detectionTime}" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время прибытия 1-го подразделения пожарной охраны (час:мин):"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
-                            </Grid>
-                            <Grid Grid.Row="3">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время сообщения (час:мин):"/>
+                                    <TextBox Grid.Row="1" Text="{Binding messageTime}" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время локализации (час:мин):"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
-                            </Grid>
-                            <Grid Grid.Row="4">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время прибытия 1-го подразделения пожарной охраны (час:мин):"/>
+                                    <TextBox Grid.Row="1" Text="{Binding arrivalTime1st}" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                                </Grid>
+                                <Grid Grid.Row="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время ликвидации открытого горения (час:мин):"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
-                            </Grid>
-                            <Grid Grid.Row="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время локализации (час:мин):"/>
+                                    <TextBox Grid.Row="1" Text="{Binding localTime}" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                                </Grid>
+                                <Grid Grid.Row="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время ликвидации последствий пожара (час:мин):"/>
-                                <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
-                            </Grid>
-                            <Grid Grid.Row="6">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время ликвидации открытого горения (час:мин):"/>
+                                    <TextBox Grid.Row="1" Text="{Binding openFireEliTime}" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                                </Grid>
+                                <Grid Grid.Row="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Дата ликвидации:"/>
-                                <DatePicker Grid.Row="1" Text="" HorizontalAlignment="Left" SelectedDate="" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Время ликвидации последствий пожара (час:мин):"/>
+                                    <TextBox Grid.Row="1" Text="{Binding eliFireTime}" HorizontalAlignment="Left" Width="200" MaxLength="5"/>
+                                </Grid>
+                                <Grid Grid.Row="6">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Дата ликвидации:"/>
+                                    <DatePicker Grid.Row="1" HorizontalAlignment="Left" SelectedDate="{Binding liquidationDate}" Width="200"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
+                        </ScrollViewer>
                     </TabItem>
                     <TabItem Header="Силы и средства пожаротушения">
                         <ScrollViewer>
@@ -604,7 +818,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Участники тушения пожара:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding firefighters}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <Grid.RowDefinitions>
@@ -613,7 +827,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Техника, прибывшая к месту пожара:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding two_technique}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="2">
                                     <Grid.RowDefinitions>
@@ -622,7 +836,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Количество техники, ед.:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding numTechnique}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="3">
                                     <Grid.RowDefinitions>
@@ -631,7 +845,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Средства индивидуальной защиты органов дыхания:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding individProtect}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="4">
                                     <Grid.RowDefinitions>
@@ -640,7 +854,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Водоснабжение на пожаре:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding waterOnFire}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="5">
                                     <Grid.RowDefinitions>
@@ -649,7 +863,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Руководитель тушения пожара:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding fireExtManager}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="6">
                                     <Grid.RowDefinitions>
@@ -658,7 +872,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Организация штаба пожаротушения:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding fireFightingHead}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="7">
                                     <Grid.RowDefinitions>
@@ -667,7 +881,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Выезд следственно-оперативной группы; был (1), не было (2):"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200" MaxLength="1"/>
+                                    <TextBox Grid.Row="1" Text="{Binding investigativeTeam}" HorizontalAlignment="Left" Width="200" MaxLength="1"/>
                                 </Grid>
                                 <Grid Grid.Row="8">
                                     <Grid.RowDefinitions>
@@ -676,7 +890,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Огнетушащие средства:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding fireExtAgents}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="9">
                                     <Grid.RowDefinitions>
@@ -685,7 +899,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Первичные средства пожаротушения:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding primaryFireEquip}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                             </Grid>
                         </ScrollViewer>
@@ -703,7 +917,6 @@
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0">
@@ -712,8 +925,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Число погибших и травмированных людей:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Возраст погибших:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding ageDead}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <Grid.RowDefinitions>
@@ -721,8 +934,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Возраст погибших:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Пол погибших:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding genderDead}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="2">
                                     <Grid.RowDefinitions>
@@ -730,8 +943,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Пол погибших:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Социальное положение погибших:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding socStatus}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="3">
                                     <Grid.RowDefinitions>
@@ -739,8 +952,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Социальное положение погибших:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Образование погибших:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding educationDead}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="4">
                                     <Grid.RowDefinitions>
@@ -748,8 +961,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Образование погибших:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Причина гибели погибших:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding causeDead}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="5">
                                     <Grid.RowDefinitions>
@@ -757,8 +970,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Причина гибели погибших:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Условия, способствовавшие гибели погибших:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding termsDead}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="6">
                                     <Grid.RowDefinitions>
@@ -766,8 +979,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Условия, способствовавшие гибели погибших:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Момент наступления смерти погибших:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding momentDead}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="7">
                                     <Grid.RowDefinitions>
@@ -775,8 +988,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Момент наступления смерти погибших:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Условия, способствовавшие травмированию:"/>
+                                    <TextBox Grid.Row="1" Text="{Binding termsInjury}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                                 <Grid Grid.Row="8">
                                     <Grid.RowDefinitions>
@@ -784,17 +997,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Условия, способствовавшие травмированию:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
-                                </Grid>
-                                <Grid Grid.Row="9">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
                                     <TextBlock Grid.Row="0" Margin="0 5 0 5" Text="Степень тяжести вреда здоровью:"/>
-                                    <TextBox Grid.Row="1" Text="" HorizontalAlignment="Left" Width="200"/>
+                                    <TextBox Grid.Row="1" Text="{Binding harmHealth}" HorizontalAlignment="Left" Width="200"/>
                                 </Grid>
                             </Grid>
                         </ScrollViewer>
@@ -803,7 +1007,7 @@
             </Grid>
             
             <Grid Grid.Row="1">
-                <Button Content="Добавить отчет" FontSize="14px"/>
+                <Button Content="Добавить отчет" Command="{Binding AddNewFileReport}" FontSize="14px"/>
             </Grid>
         </Grid>
     </DockPanel>

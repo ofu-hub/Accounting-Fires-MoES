@@ -35,23 +35,21 @@ namespace MoesApp.Data
         /// <param name="typesettCode"></param>
         /// <param name="typefiresettCode"></param>
         /// <returns></returns>
-        public static string CreateGenInfo(string orgCode, DateTime datefire, string typesettCode, string typefiresettCode)
+        public static GenInfo CreateGenInfo(string orgCode, DateTime datefire, string typesettCode, string typefiresettCode)
         {
-            string result = "Ошибка!";
             using (DataBaseContext db = new DataBaseContext())
             {
                 var newGenInfo = new GenInfo
                 {
                     OrgCode = orgCode,
-                    Datefire = DateOnly.Parse(datefire.ToString("d")),
+                    Datefire = DateOnly.Parse(datefire.ToString("yyyy-MM-dd")),
                     TypesettCode = typesettCode,
                     TypefiresettCode = typefiresettCode
                 };
                 db.GenInfos.Add(newGenInfo);
                 db.SaveChanges();
-                result = "Ок!";
+                return newGenInfo;
             }
-            return result;
         }
         /// <summary>
         /// 
@@ -85,7 +83,7 @@ namespace MoesApp.Data
             {
                 GenInfo newGenInfo = db.GenInfos.FirstOrDefault(f => f.Id == oldGenInfo.Id);
                 newGenInfo.OrgCode = orgCode;
-                newGenInfo.Datefire = DateOnly.Parse(datefire.ToString("d"));
+                newGenInfo.Datefire = DateOnly.Parse(datefire.ToString("yyyy-MM-dd"));
                 newGenInfo.TypesettCode = typesettCode;
                 newGenInfo.TypefiresettCode = typefiresettCode;
                 db.SaveChanges();

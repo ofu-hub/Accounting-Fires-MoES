@@ -41,11 +41,10 @@ namespace MoesApp.Data
         /// <param name="fireExtAgents"></param>
         /// <param name="primaryFireEquip"></param>
         /// <returns></returns>
-        public static string CreateFireForcesMean(string firefighters, string technique, string numTechnique, 
+        public static FireForcesMean CreateFireForcesMean(string firefighters, string technique, string numTechnique, 
                                                     string individProtect, string waterOnFire, string fireExtManager,
                                                     string fireFightingHead, string investigativeTeam, string fireExtAgents, string primaryFireEquip)
         {
-            string result = "Ошибка!";
             using (DataBaseContext db = new DataBaseContext())
             {
                 var newFireForcesMean = new FireForcesMean
@@ -63,9 +62,8 @@ namespace MoesApp.Data
                 };
                 db.FireForcesMeans.Add(newFireForcesMean);
                 db.SaveChanges();
-                result = "Ок!";
+                return newFireForcesMean;
             }
-            return result;
         }
         /// <summary>
         /// 

@@ -42,7 +42,7 @@ namespace MoesApp.Data
         /// <param name="apartDest"></param>
         /// <param name="apartDam"></param>
         /// <returns>Результат</returns>
-        public static string CreateFireConsequence(string peopleDiedAll, string peopleDiedKids, string peopleDiedWork, 
+        public static FireConsequence CreateFireConsequence(string peopleDiedAll, string peopleDiedKids, string peopleDiedWork, 
                                                     string peopleInjuredAll, string peopleInjuredKids, string peopleInjuredWork,
                                                     string mFireDamage, string buildDest, string buildDam, string apartDest, string apartDam)
         {
@@ -65,9 +65,8 @@ namespace MoesApp.Data
                 };
                 db.FireConsequences.Add(newFireConsequence);
                 db.SaveChanges();
-                result = "Ок!";
+                return newFireConsequence;
             }
-            return result;
         }
         /// <summary>
         /// Удалить последствия пожара

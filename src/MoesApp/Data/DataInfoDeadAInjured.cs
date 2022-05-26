@@ -41,10 +41,9 @@ namespace MoesApp.Data
         /// <param name="harmHealth"></param>
         /// <param name="ageDead"></param>
         /// <returns></returns>
-        public static string CreateInfoDeadAInjured(string genderDead, string socStatus, string educationDead, string causeDead,
+        public static InfoDeadAInjured CreateInfoDeadAInjured(string genderDead, string socStatus, string educationDead, string causeDead,
                                                     string termsDead, string momentDead, string termsInjury, string harmHealth, string ageDead)
         {
-            string result = "Ошибка!";
             using (DataBaseContext db = new DataBaseContext())
             {
                 var newInfoDeadAInjured = new InfoDeadAInjured
@@ -61,9 +60,8 @@ namespace MoesApp.Data
                 };
                 db.InfoDeadAInjureds.Add(newInfoDeadAInjured);
                 db.SaveChanges();
-                result = "Ок!";
+                return newInfoDeadAInjured;
             }
-            return result;
         }
         /// <summary>
         /// 

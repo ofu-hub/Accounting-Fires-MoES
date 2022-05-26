@@ -38,7 +38,7 @@ namespace MoesApp.Data
         /// <param name="eliFireTime"></param>
         /// <param name="liquidationDate"></param>
         /// <returns></returns>
-        public static string CreateFireDevExt(string detectionTime, string messageTime, string arrivalTime1st,
+        public static FireDevExt CreateFireDevExt(string detectionTime, string messageTime, string arrivalTime1st,
                                                 string localTime, string openFireEliTime, string eliFireTime, DateTime liquidationDate)
         {
             string result = "Ошибка!";
@@ -52,13 +52,12 @@ namespace MoesApp.Data
                     LocalTime = TimeOnly.Parse(localTime),
                     OpenFireEliTime = TimeOnly.Parse(openFireEliTime),
                     EliFireTime = TimeOnly.Parse(eliFireTime),
-                    LiquidationDate = DateOnly.Parse(liquidationDate.ToString("d"))
+                    LiquidationDate = DateOnly.Parse(liquidationDate.ToString("yyyy-MM-dd"))
                 };
                 db.FireDevExts.Add(newFireDevExt);
                 db.SaveChanges();
-                result = "Ок!";
+                return newFireDevExt;
             }
-            return result;
         }
         /// <summary>
         /// Удалить развитие и тушение пожара
@@ -101,7 +100,7 @@ namespace MoesApp.Data
                 newFireDevExt.LocalTime = TimeOnly.Parse(localTime);
                 newFireDevExt.OpenFireEliTime = TimeOnly.Parse(openFireEliTime);
                 newFireDevExt.EliFireTime = TimeOnly.Parse(eliFireTime);
-                newFireDevExt.LiquidationDate = DateOnly.Parse(liquidationDate.ToString("d"));
+                newFireDevExt.LiquidationDate = DateOnly.Parse(liquidationDate.ToString("yyyy-MM-dd"));
                 db.SaveChanges();
                 result = "Ок!";
             }

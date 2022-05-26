@@ -43,7 +43,7 @@ namespace MoesApp.Data
         /// <param name="attitudePerson"></param>
         /// <param name="statePerson"></param>
         /// <returns></returns>
-        public static string CreateFireObj(string subject, string subTypeOwner, string objRisk, string kindFireObj,
+        public static FireObj CreateFireObj(string subject, string subTypeOwner, string objRisk, string kindFireObj,
                                             string nameFireObj, string floorsObj, string floorWhereFire, string locationFire,
                                             string causeFire, string guiltyPerson, string attitudePerson, string statePerson)
         {
@@ -67,9 +67,8 @@ namespace MoesApp.Data
                 };
                 db.FireObjs.Add(newFireObj);
                 db.SaveChanges();
-                result = "Ок!";
+                return newFireObj;
             }
-            return result;
         }
         /// <summary>
         /// 

@@ -6,6 +6,7 @@ using MoesApp.ViewModels.Base;
 using MoesApp.Commands;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
+using System.Windows;
 
 namespace MoesApp.ViewModels
 {
@@ -69,6 +70,48 @@ namespace MoesApp.ViewModels
             newWindow.Owner = App.Current.MainWindow;
             newWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
             newWindow.ShowDialog();
+
+            UpdateAllFileReports();
+        }
+
+        #endregion
+        #region Удаление отчета
+        private RelayCommand _DelFileReport;
+        public RelayCommand DelFileReport
+        {
+            get
+            {
+                return _DelFileReport ?? new RelayCommand(obj =>
+                {
+                    DeleteFile();
+                });
+            }
+        }
+
+        public void DeleteFile()
+        {
+            string messageBoxText = string.Empty;
+            messageBoxText = DataFileReport.DeleteFileReport(SelectedFileRep);
+
+            _FileReports.Remove(SelectedFileRep);
+
+            string caption = "Уведомление";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxResult result;
+
+            result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+        }
+        #endregion
+        #region Обновление данных
+
+        private void UpdateAllFileReports()
+        {
+            _FileReports = DataFileReport.GetAllFileReports();
+            MainWindow.AllFileReportsView.ItemsSource = null;
+            MainWindow.AllFileReportsView.Items.Clear();
+            MainWindow.AllFileReportsView.ItemsSource = _FileReports;
+            MainWindow.AllFileReportsView.Items.Refresh();
         }
 
         #endregion

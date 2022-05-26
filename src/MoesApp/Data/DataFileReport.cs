@@ -45,7 +45,7 @@ namespace MoesApp.Data
                 };
                 db.FileReports.Add(newFileReport);
                 db.SaveChanges();
-                result = "Ок!";
+                result = "Отчет успешно создан!";
             }
             return result;
         }
@@ -61,7 +61,7 @@ namespace MoesApp.Data
             {
                 db.FileReports.Remove(fileReport);
                 db.SaveChanges();
-                result = "Ок!";
+                result = "Отчет №" + fileReport.Id + ", успешно удалён!";
             }
             return result;
         }

@@ -37,7 +37,7 @@ namespace MoesApp.Data
         /// <param name="technique"></param>
         /// <param name="matValues"></param>
         /// <returns></returns>
-        public static string CreateFireRescued(string peopleSaved, string peopleEvacuated, string cattleLarge, 
+        public static FireRescued CreateFireRescued(string peopleSaved, string peopleEvacuated, string cattleLarge, 
                                                 string cattleSmall, string technique, string matValues)
         {
             string result = "Ошибка!";
@@ -54,9 +54,8 @@ namespace MoesApp.Data
                 };
                 db.FireRescueds.Add(newFireRescued);
                 db.SaveChanges();
-                result = "Ок!";
+                return newFireRescued;
             }
-            return result;
         }
         /// <summary>
         /// 
