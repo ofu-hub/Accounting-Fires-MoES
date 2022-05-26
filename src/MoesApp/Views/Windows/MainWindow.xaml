@@ -13,11 +13,9 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Добавить отчет" Command="{Binding OpenWindow}"/>
-                <MenuItem Header="Удалить отчет"/>
-                <MenuItem Header="Редактировать отчет"/>
+                <MenuItem Header="Удалить отчет" Command="{Binding DelFileReport}"/>
                 <Separator/>
                 <MenuItem Header="Сформировать PDF отчет" Command="{Binding GeneratePDFFile}"/>
-                <MenuItem Header="Сформировать Word отчет"/>
                 <Separator/>
                 <MenuItem Header="Выход"/>
             </MenuItem>
@@ -46,7 +44,6 @@
                          Margin="5 5 5 5">
                 <Button Content="Добавить отчет" Command="{Binding OpenWindow}" FontSize="14px"/>
                 <Button Content="Удалить отчет" Command="{Binding DelFileReport}" Margin="5 0 5 0" FontSize="14px"/>
-                <Button Content="Редактировать отчет" FontSize="14px"/>
             </UniformGrid>
         </Grid>
         <Grid>

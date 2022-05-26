@@ -118,63 +118,93 @@ namespace MoesApp.ViewModels
         public void SendFileReport()
         {
             string result = string.Empty;
+            bool flag = true;
 
             if (orgCode != string.Empty && typeCode != string.Empty && typeFireCode != string.Empty)
             {
-                genInfo = DataGenInfo.CreateGenInfo(orgCode, dateFire, typeCode, typeFireCode);
-            }
-            if (subjectCode != string.Empty && subTypeOwnerCode != string.Empty && objRiskCode != string.Empty &&
+                if (subjectCode != string.Empty && subTypeOwnerCode != string.Empty && objRiskCode != string.Empty &&
                         kindFireObjCode != string.Empty && nameFireObjCode != string.Empty && floorsObjCode != string.Empty &&
                         floorWhereFireCode != string.Empty && locationFireCode != string.Empty && causeFireCode != string.Empty &&
                         guiltyPersonCode != string.Empty && attitudePersonCode != string.Empty && statePersonCode != string.Empty)
-            {
-                fireObj = DataFireObj.CreateFireObj(subjectCode, subTypeOwnerCode, objRiskCode, kindFireObjCode, nameFireObjCode,
-                    floorsObjCode, floorWhereFireCode, locationFireCode, causeFireCode, guiltyPersonCode, attitudePersonCode, statePersonCode);
-            }
-            if (peopleDiedAll != string.Empty && peopleDiedKids != string.Empty && peopleDiedWork != string.Empty &&
-                peopleInjuredAll != string.Empty && peopleInjuredKids != string.Empty && peopleInjuredWork != string.Empty &&
-                mFireDamage != string.Empty && buildDest != string.Empty && buildDam != string.Empty &&
-                apartDest != string.Empty && apartDam != string.Empty)
-            {
-                fireConsequence = DataFireConsequence.CreateFireConsequence(peopleDiedAll, peopleDiedKids, peopleDiedWork, peopleInjuredAll, peopleInjuredKids,
-                                                                            peopleInjuredWork, mFireDamage, buildDest, buildDam, apartDest, apartDam);
-            }
-            if (peopleSaved != string.Empty && peopleEvacuated != string.Empty && cattleLarge != string.Empty &&
-                        cattleSmall != string.Empty && technique != string.Empty && matValues != string.Empty)
-            {
-                fireRescued = DataFireRescued.CreateFireRescued(peopleSaved, peopleEvacuated, cattleLarge,
-                                                            cattleSmall, technique, matValues);
-            }
-            if (detectionTime != string.Empty && messageTime != string.Empty && arrivalTime1st != string.Empty &&
-                        localTime != string.Empty && openFireEliTime != string.Empty && eliFireTime != string.Empty)
-            {
-                fireDevExt = DataFireDevExt.CreateFireDevExt(detectionTime, messageTime, arrivalTime1st,
-                                                    localTime, openFireEliTime, eliFireTime, liquidationDate);
-            }
-            if (firefighters != string.Empty && two_technique != string.Empty && numTechnique != string.Empty &&
-                individProtect != string.Empty && waterOnFire != string.Empty && fireExtManager != string.Empty &&
-                fireFightingHead != string.Empty && investigativeTeam != string.Empty && fireExtAgents != string.Empty &&
-                primaryFireEquip != string.Empty)
-            {
-                fireForcesMean = DataFireForcesMean.CreateFireForcesMean(firefighters, two_technique, numTechnique,
-                                                                individProtect, waterOnFire, fireExtManager,
-                                                                fireFightingHead, investigativeTeam, fireExtAgents, primaryFireEquip);
-            }
-            if (genderDead != string.Empty && socStatus != string.Empty && educationDead != string.Empty &&
-                causeDead != string.Empty && termsDead != string.Empty && momentDead != string.Empty &&
-                termsInjury != string.Empty && harmHealth != string.Empty && ageDead != string.Empty)
-            {
-                infoDeadAInjured = DataInfoDeadAInjured.CreateInfoDeadAInjured(genderDead, socStatus, educationDead, causeDead,
-                                                                    termsDead, momentDead, termsInjury, harmHealth, ageDead);
-            }
-            if (name != string.Empty)
-            {
-                result = DataFileReport.CreateFileReport(name, genInfo, fireObj, fireConsequence, fireRescued,
-                                                            fireDevExt, fireForcesMean, infoDeadAInjured);
+                {
+                    if (peopleDiedAll != string.Empty && peopleDiedKids != string.Empty && peopleDiedWork != string.Empty &&
+                        peopleInjuredAll != string.Empty && peopleInjuredKids != string.Empty && peopleInjuredWork != string.Empty &&
+                        mFireDamage != string.Empty && buildDest != string.Empty && buildDam != string.Empty &&
+                        apartDest != string.Empty && apartDam != string.Empty)
+                    {
+                        if (peopleSaved != string.Empty && peopleEvacuated != string.Empty && cattleLarge != string.Empty &&
+                            cattleSmall != string.Empty && technique != string.Empty && matValues != string.Empty)
+                        {
+                            if (detectionTime != string.Empty && messageTime != string.Empty && arrivalTime1st != string.Empty &&
+                                        localTime != string.Empty && openFireEliTime != string.Empty && eliFireTime != string.Empty)
+                            {
+                                if (firefighters != string.Empty && two_technique != string.Empty && numTechnique != string.Empty &&
+                                       individProtect != string.Empty && waterOnFire != string.Empty && fireExtManager != string.Empty &&
+                                       fireFightingHead != string.Empty && investigativeTeam != string.Empty && fireExtAgents != string.Empty &&
+                                       primaryFireEquip != string.Empty)
+                                {
+                                    if (genderDead != string.Empty && socStatus != string.Empty && educationDead != string.Empty &&
+                                        causeDead != string.Empty && termsDead != string.Empty && momentDead != string.Empty &&
+                                        termsInjury != string.Empty && harmHealth != string.Empty && ageDead != string.Empty)
+                                    {
 
+                                        if (name != string.Empty)
+                                        {
+                                            genInfo = DataGenInfo.CreateGenInfo(orgCode, dateFire, typeCode, typeFireCode);
+                                            fireObj = DataFireObj.CreateFireObj(subjectCode, subTypeOwnerCode, objRiskCode, kindFireObjCode, nameFireObjCode,
+                                                floorsObjCode, floorWhereFireCode, locationFireCode, causeFireCode, guiltyPersonCode, attitudePersonCode, statePersonCode);
+                                            fireConsequence = DataFireConsequence.CreateFireConsequence(peopleDiedAll, peopleDiedKids, peopleDiedWork, peopleInjuredAll, peopleInjuredKids,
+                                                                                                        peopleInjuredWork, mFireDamage, buildDest, buildDam, apartDest, apartDam);
+                                            fireRescued = DataFireRescued.CreateFireRescued(peopleSaved, peopleEvacuated, cattleLarge,
+                                                                                        cattleSmall, technique, matValues);
+                                            fireDevExt = DataFireDevExt.CreateFireDevExt(detectionTime, messageTime, arrivalTime1st,
+                                                                                localTime, openFireEliTime, eliFireTime, liquidationDate);
+                                            fireForcesMean = DataFireForcesMean.CreateFireForcesMean(firefighters, two_technique, numTechnique,
+                                                                                            individProtect, waterOnFire, fireExtManager,
+                                                                                            fireFightingHead, investigativeTeam, fireExtAgents, primaryFireEquip);
+                                            infoDeadAInjured = DataInfoDeadAInjured.CreateInfoDeadAInjured(genderDead, socStatus, educationDead, causeDead,
+                                                                                                termsDead, momentDead, termsInjury, harmHealth, ageDead);
+                                            result = DataFileReport.CreateFileReport(name, genInfo, fireObj, fireConsequence, fireRescued,
+                                                                                        fireDevExt, fireForcesMean, infoDeadAInjured);
+                                        }
+                                        else
+                                            flag = false;
+                                    }
+                                    else
+                                        flag = false;
+                                }
+                                else
+                                    flag = false;
+                            }
+                            else
+                                flag = false;
+                        }
+                        else
+                            flag = false;
+                    }
+                    else
+                        flag = false;
+                }
+                else
+                    flag = false;
+            }
+            else
+                flag = false;
+
+            if (flag == false)
+            {
                 string caption = "Уведомление";
                 MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Warning;
+                MessageBoxImage icon = MessageBoxImage.Error;
+                MessageBoxResult mbox;
+
+                mbox = MessageBox.Show("Добавление невозможно, заполнены не все поля!", caption, button, icon, MessageBoxResult.Yes);
+            }
+            else
+            {
+                string caption = "Уведомление";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Information;
                 MessageBoxResult mbox;
 
                 mbox = MessageBox.Show(result, caption, button, icon, MessageBoxResult.Yes);
